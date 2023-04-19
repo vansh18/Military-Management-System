@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 * 
 {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    outline: 1px solid black !important;
+    /* outline: 1px solid black !important; */
+}
+
+html
+{
+    height: 100%;
 }
 
 body
@@ -12,24 +18,55 @@ body
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    background: #DAE6F2;
-    /* background: url(/images/darker.jpg); */
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    background: #003366;
+    height: 100%;
+}
+
+.welcome
+{
+    position: relative;
+    display: inline-block;
+    left: 5%;
+    top: 2%;
+}
+
+.welcome-text
+{
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    color: #EAF2FF;
+    
+}
+
+.name-text 
+{
+    font-size: 24px;
+    color: #FFA500;
 }
 
 .parent 
 {
-    margin: 5% auto;
+    height: 85%;
+    position: absolute;
+    top: 50%;
+    width: 90%;
+    transform: translate(5%, -45%);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr repeat(2, .8fr) repeat(2, 1fr);
-    grid-column-gap: 25px;
-    grid-row-gap: 30px;
+    grid-template-columns: .3fr repeat(4, 1fr);
+    grid-template-rows: 1fr repeat(2, .9fr) repeat(2, .8fr);
+    gap: 20px;
 }
     
+.child
+{
+    background: rgba(34, 73, 113, 0.65);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;   
+}
+  
 .div1 
 { 
-    grid-area: 1 / 1 / 2 / 2; 
+    grid-area: 1 / 1 / 6 / 2; 
 }
 
 .div2 
@@ -44,40 +81,30 @@ body
 
 .div4 
 { 
-    grid-area: 2 / 1 / 3 / 2; 
-}
-
-.div4 .small_heading
-{
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    color: #FFFFFF;
-}
-
-.div4 p
-{
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 44px;
-    color: #FFA500;
+    grid-area: 1 / 4 / 2 / 5; 
 }
 
 .div5 
 { 
-    grid-area: 3 / 1 / 4 / 2; 
+    grid-area: 1 / 5 / 6 / 6; 
 }
 
 .div6 
 { 
-    grid-area: 2 / 2 / 4 / 4; 
+    grid-area: 2 / 2 / 3 / 3; 
 }
 
 .div7 
 { 
-    grid-area: 4 / 1 / 6 / 4; 
+    grid-area: 3 / 2 / 4 / 3; 
+}
+
+.div8 
+{ 
+    grid-area: 2 / 3 / 4 / 5; 
+}
+
+.div9 
+{ 
+    grid-area: 4 / 2 / 6 / 5; 
 }
