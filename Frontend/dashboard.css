@@ -22,6 +22,16 @@ body
     height: 100%;
 }
 
+.watermark
+{
+    position: absolute;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
 .welcome
 {
     position: relative;
