@@ -43,7 +43,7 @@ body
 
 .welcome-text
 {
-    font-size: 24px;
+    font-size: 22px;
     font-family: 'Inter', sans-serif;
     color: #EAF2FF;
     
@@ -51,7 +51,7 @@ body
 
 .name-text 
 {
-    font-size: 24px;
+    font-size: 22px;
     color: #FFA500;
 }
 
@@ -113,15 +113,7 @@ body
 .div8 
 { 
     grid-area: 2 / 3 / 4 / 5; 
-    overflow: auto;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
-
-}
-
-.div8::-webkit-scrollbar 
-{
-    width: 0;
+    overflow:hidden;
 }
 
 .div9 
@@ -182,20 +174,16 @@ body
     color: #FFA500;
 }
 
-table 
+table
 {
-    border-collapse: collapse;
-    width: 100%;
-    overflow: scroll;
+    margin-bottom: 10px;
 }
-  
-caption 
+
+.my-battalion
 {
-    color: #EAF2FF;
-    font-size: 18px;
-    text-align: left;
-    padding: 5px 0 0 15px;
-    font-weight: 500;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
   
 th 
@@ -239,13 +227,19 @@ tr td:first-child
 {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #999999;
+    /* border-bottom: 1px solid #999999; */
     color: #EAF2FF;
 }
 
 .table-container::-webkit-scrollbar 
 {
-    width: 0;
+    width: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb 
+{
+    background: #ffffff60;
+    border-radius: calc(15px / 2);
 }
   
 .recent-operation th 
