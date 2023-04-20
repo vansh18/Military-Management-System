@@ -296,17 +296,69 @@ tr td:first-child
     font-family: 'Inter', sans-serif;
     font-weight: 500;
 }
-  
-  
-
 
 .orders-heading
 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.orders-heading h2
+{
     position: relative;
-    left: 5%;
-    top: 5%;
+    padding: 10px;
     color: #EAF2FF;
     font-size: 24px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
+    display: inline-block;
+}
+
+.div5 a 
+{
+    text-decoration: none;
+    color: #999999;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.orders
+{
+    margin-top: 15px;
+}
+
+.order-container
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 10px 15px 10px;
+    transition: .1s ease-in-out;
+}
+
+.order-container:hover
+{
+    background: rgba(34, 73, 113, 1);
+    border-radius: 10px;
+}
+
+.order-container img
+{
+    width: 50px;
+    height: 50px;
+}
+
+.order
+{
+    color: #EAF2FF;
+    font-weight: 600;
+}
+
+.order-date
+{
+    font-size: 12px;
+    color: #999999;
 }
