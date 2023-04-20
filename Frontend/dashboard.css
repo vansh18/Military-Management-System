@@ -5,7 +5,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* outline: 1px solid black !important; */
+    /* outline: 1px solid white !important; */
 }
 
 html
@@ -114,7 +114,7 @@ body
 { 
     grid-area: 2 / 3 / 4 / 5; 
     overflow: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
+    -ms-overflow-style: none; 
     scrollbar-width: none;
 
 }
@@ -125,8 +125,9 @@ body
 }
 
 .div9 
-{ 
-    grid-area: 4 / 2 / 6 / 5; 
+{
+    grid-area: 4 / 2 / 6 / 5;
+    overflow: hidden;
 }
 
 .content
@@ -181,28 +182,6 @@ body
     color: #FFA500;
 }
 
-.recent-operation-heading
-{
-    position: relative;
-    left: 2%;
-    top: 5%;
-    color: #EAF2FF;
-    font-size: 18px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-}
-
-.orders-heading
-{
-    position: relative;
-    left: 5%;
-    top: 5%;
-    color: #EAF2FF;
-    font-size: 24px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-}
-
 table 
 {
     border-collapse: collapse;
@@ -242,4 +221,98 @@ tr td:first-child
     text-align: left;
     color: #EAF2FF;
 }
+
+.table-container 
+{
+    height: 100%;
+    overflow-y: auto;
+}
   
+.recent-operation 
+{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+  
+.recent-operation th, .recent-operation td  
+{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #999999;
+    color: #EAF2FF;
+}
+
+.table-container::-webkit-scrollbar 
+{
+    width: 0;
+}
+  
+.recent-operation th 
+{
+    color: #EAF2FF;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+  
+.recent-operation td 
+{
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+  
+.recent-operation td:first-child 
+{
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+  
+.recent-operation td img 
+{
+    vertical-align: middle;
+    margin-right: 5px;
+}
+  
+.top 
+{
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.top a 
+{
+    text-decoration: none;
+    color: #999999;
+    font-weight: 500;
+    font-size: 12px;
+}
+  
+.recent-operation-heading 
+{
+    margin: 0;
+    color: #EAF2FF;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+  
+  
+
+
+.orders-heading
+{
+    position: relative;
+    left: 5%;
+    top: 5%;
+    color: #EAF2FF;
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
