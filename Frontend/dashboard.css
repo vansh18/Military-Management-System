@@ -113,6 +113,15 @@ body
 .div8 
 { 
     grid-area: 2 / 3 / 4 / 5; 
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+
+}
+
+.div8::-webkit-scrollbar 
+{
+    width: 0;
 }
 
 .div9 
@@ -193,3 +202,44 @@ body
     font-family: 'Inter', sans-serif;
     font-weight: 600;
 }
+
+table 
+{
+    border-collapse: collapse;
+    width: 100%;
+    overflow: scroll;
+}
+  
+caption 
+{
+    color: #EAF2FF;
+    font-size: 18px;
+    text-align: left;
+    padding: 5px 0 0 15px;
+    font-weight: 500;
+}
+  
+th 
+{
+    color: #999999;
+    font-size: 12px;
+    padding: 10px;
+    text-align: left;
+}
+  
+td 
+{
+    background-color: transparent;
+    color: #FFA500;
+    font-size: 12px;
+    padding: 10px;
+    text-align: left;
+    font-weight: 500;
+}
+
+tr td:first-child 
+{
+    text-align: left;
+    color: #EAF2FF;
+}
+  
