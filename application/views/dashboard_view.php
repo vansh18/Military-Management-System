@@ -51,8 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="div4 child"> 
       <a href="give-orders.html" class="content">
-        <img src="<?php echo ASSETS.'/images/orders.png';?>" alt="order-img">
-        Manage Armory
+        <img src="<?php echo ASSETS.'/images/phone.png';?>" alt="order-img">
+        Give Orders
       </a>
     </div>
     <div class="div5 child"> 

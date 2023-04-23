@@ -371,6 +371,7 @@ tr td:first-child
     color: #999999;
     font-weight: 500;
     font-size: 12px;
+    padding: 10px;
 }
 
 .orders
@@ -383,8 +384,7 @@ tr td:first-child
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 10px;
-    margin: 10px 10px 15px 10px;
+    margin: 10px 10px 0px 0px;
     transition: .1s ease-in-out;
 }
 
@@ -404,10 +404,12 @@ tr td:first-child
 {
     color: #EAF2FF;
     font-weight: 600;
+    padding-left: 10px;
 }
 
 .order-date
 {
     font-size: 12px;
     color: #999999;
+    padding-left: 10px;
 }
