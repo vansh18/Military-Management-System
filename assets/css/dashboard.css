@@ -63,7 +63,7 @@ body
     width: 90%;
     transform: translate(5%, -45%);
     display: grid;
-    grid-template-columns: .3fr repeat(4, 1fr);
+    grid-template-columns: 80px repeat(4, 1fr);
     grid-template-rows: 1fr repeat(2, .9fr) repeat(2, .8fr);
     gap: 20px;
 }
