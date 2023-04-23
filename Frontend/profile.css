@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* 
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* outline: 1px solid white !important; */
+}
+
+html
+{
+    height: 100%;
+}
+
+body
+{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background: #003366;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 100%;
+}
+
+.watermark
+{
+    position: absolute;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.welcome
+{
+    position: relative;
+    display: inline-block;
+    left: 5%;
+    top: 2%;
+    color: #EAF2FF;
+    font-size: 24px;
+}
+
+.welcome span
+{
+    font-size: 24px;
+    color: #FFA500;
+}
+
+.parent 
+{
+    height: 85%;
+    position: absolute;
+    top: 50%;
+    width: 90%;
+    transform: translate(5%, -45%);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: .4fr 1fr;
+    gap: 20px;
+}
+
+.child
+{
+    background: rgba(34, 73, 113, 0.45);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;   
+}
+    
+.div1 
+{ 
+    grid-area: 1 / 1 / 3 / 2; 
+}
+
+.div2 
+{ 
+    grid-area: 1 / 2 / 2 / 3; 
+}
+
+.div3 
+{ 
+    grid-area: 2 / 2 / 3 / 3; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    top: 25px;
+    width: 100%;
+}
+
+.menu a 
+{
+    transition: .1s ease;
+}
+
+.menu img
+{
+    width: 25px;
+}
+
+.menu a:hover
+{
+    transform: scale(1.2);
+}
+
+.menu .profile-img
+{
+    width: 55px;
+    height: 60px;
+    border-radius: 100%;
+    background-size: contain;
+}
+
+.menu .profile:hover
+{
+    transform: scale(1);
+}
+
+.menu .home-img
+{
+    width: 45px;
+}
+
+.menu .logout-img
+{
+    width: 20px;
+}
+
+.heading-container
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 0px 0px 20px;
+}
+
+.heading-container h2
+{
+    color: #FFA500;
+    font-family: 'Inter', sans-serif;
+    margin: 2px;
+}
+
+.heading-container .rank
+{
+    color: #EAF2FF;
+    font-size: 16px;
+    margin: 2px;
+    font-weight: 400;
+}
+
+.heading-container .service-id
+{
+    color: #EAF2FF;
+    font-size: 16px;
+    margin: 2px;
+    font-weight: 300;
+}
+
+.info
+{
+    height: 55%;
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid white;
+}
+
+.achivements
+{
+    height: 45%;
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid white;
+}
