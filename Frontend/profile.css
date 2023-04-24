@@ -196,6 +196,11 @@ body
     font-family: 'Inter', sans-serif;
 }
 
+.edit img 
+{
+    width: 20px;
+}
+
 .achievements
 {
     position: relative;
@@ -275,4 +280,9 @@ body
 .title span
 {
     color: #EAF2FF;
+}
+
+.status img
+{
+    width: 10px;
 }

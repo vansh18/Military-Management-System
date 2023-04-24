@@ -253,6 +253,11 @@ td
     font-weight: 500;
 }
 
+td img
+{
+    width: 10px;
+}
+
 tr td:first-child 
 {
     text-align: left;
