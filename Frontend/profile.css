@@ -59,14 +59,15 @@ body
     display: grid;
     grid-template-columns: 80px 1fr;
     grid-template-rows: .4fr 1fr;
-    gap: 20px;
+    gap: 10px;
 }
 
 .child
 {
+    height: 95%;
     background: rgba(34, 73, 113, 0.45);
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.10);
-    border-radius: 10px;   
+    border-radius: 10px;  
 }
     
 .div1 
@@ -142,7 +143,7 @@ body
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0px 0px 0px 20px;
+    padding: 5px 0px 5px 20px;
 }
 
 .heading-container h2
@@ -173,13 +174,85 @@ body
     height: 55%;
     width: 100%;
     border-radius: 20px;
-    border: 2px solid white;
 }
 
-.achivements
+.achievements
 {
+    position: relative;
     height: 45%;
     width: 100%;
     border-radius: 20px;
-    border: 2px solid white;
+}
+
+.top 
+{
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.achievements h3
+{
+    display: inline-block;
+    display: flex;
+    gap: 5px;
+    color: #FFA500;
+    padding: 0px 0px 0px 15px;
+}
+
+.achievements-container
+{
+    height: 65%;
+    overflow-y: auto;
+}
+
+.achievements-container::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+.achievements-container::-webkit-scrollbar-thumb 
+{
+    background: #ffffff60;
+    border-radius: calc(15px / 2);
+}
+
+.achievements img 
+{
+    height: 30px;
+}
+
+.achievements-text
+{
+    margin: 5px 25px;
+}
+
+.achievements-text li
+{
+    color: #EAF2FF;
+    line-height: 35px;
+}
+
+.info-text
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 20px; 
+    width: 80%;
+    padding:20px;
+}
+
+.title
+{
+    color: #999999;
+
+}
+
+.title span
+{
+    color: #EAF2FF;
 }
