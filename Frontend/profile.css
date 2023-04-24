@@ -176,6 +176,26 @@ body
     border-radius: 20px;
 }
 
+.edit
+{
+    position: absolute;
+    margin-top: 2%;
+    right: 5%;
+}
+
+.edit button
+{
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #999999;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Inter', sans-serif;
+}
+
 .achievements
 {
     position: relative;
