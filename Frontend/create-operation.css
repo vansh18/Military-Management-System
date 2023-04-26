@@ -39,15 +39,15 @@ body
 .container
 {
     position: relative;
-    width: 40%;
-    height: 85%;
+    width: 60%;
+    height: 87%;
     background: rgba(34, 73, 113, 0.65);
     border-radius: 10px;
 }
 
 .heading
 {
-    padding:10px 15px;
+    padding:15px 35px 10px 35px;
 }
 
 .heading h2
@@ -67,3 +67,149 @@ body
     padding-top: 5px;
     color: #999999;
 }
+
+.form-container
+{
+    width: 100%;
+    height: calc(100% - 80px);
+    /* outline: 1px solid white; */
+}
+
+form 
+{
+    height: 100%;
+    width: 100%; 
+    padding: 5px 50px;
+    /* outline: 1px solid green; */
+}
+  
+label 
+{
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #999999;
+}
+  
+input[type="text"],input[type="date"],select 
+{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    background: none;
+    border-radius: 5px;
+    border: 2px solid #45678A;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #EAF2FF;
+    outline: none;
+}
+
+#operation-name 
+{
+    color: #FFA500;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+#battalion
+{
+    max-width: 220px;
+}
+
+.dates
+{
+    display: flex;
+    flex-direction: row;
+    gap: 85px;
+    margin-bottom: 20px;
+}
+
+#start-date
+{
+    min-width: 220px;
+}
+
+#end-date
+{
+    min-width: 220px;
+}
+
+textarea 
+{
+    display: block;
+    width: 100%;
+    min-height: 60px;
+    padding: 10px;
+    background: none;
+    margin-bottom: 10px;
+    border: 2px solid #45678A;
+    border-radius: 5px;
+    color: #EAF2FF;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    resize: none;
+    outline: none;
+}
+
+textarea::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb 
+{
+    background: #ffffff60;
+    border-radius: calc(15px / 2);
+}
+
+input[type="submit"]
+{
+    margin-bottom: 10px;
+    background-color: #FFA500;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    float: right;
+}
+
+input[type="submit"]:hover
+{
+
+}
+  
+input[type="date"] 
+{
+    display: inline-block;
+    width: calc(50% - 5px);
+    margin-right: 10px;
+}
+  
+  
+@media only screen and (max-width: 500px) 
+{
+    input[type="date"] 
+    {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    input[type="date"]:last-child 
+    {
+      margin-bottom: 20px;
+    }
+  }
+  

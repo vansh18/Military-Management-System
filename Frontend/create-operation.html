@@ -14,6 +14,36 @@
             <h2>Create <span>Operation</span></h2>
             <p>Create new operation for the battalion under you.</p>
         </div>
+        <div class="form-container">
+            <form>
+                <label for="operation-name">Operation Name <sup>*</sup></label>
+                <input type="text" id="operation-name" name="operation-name" autocomplete="off" required>
+                
+                <label for="operation-description">Operation Description <sup>*</sup></label>
+                <textarea id="operation-description" name="operation-description" autocomplete="off" required></textarea>
+                
+                <label for="battalion">Select Battalion <sup>*</sup></label>
+                <select id="battalion" name="battalion" autocomplete="off" required>
+                  <option value="battalion1">Battalion 1</option>
+                  <option value="battalion2">Battalion 2</option>
+                  <option value="battalion3">Battalion 3</option>
+                </select>
+
+                <div class="dates">
+                    <div class="start-date">
+                        <label for="start-date">Start Date <sup>*</sup></label>
+                        <input type="date" id="start-date" name="start-date" autocomplete="off" required>
+                    </div>
+                    
+                    <div class="end-date">
+                        <label for="end-date">End Date <sup>*</sup></label>
+                        <input type="date" id="end-date" name="end-date"  autocomplete="off" required>
+                    </div>
+                </div>
+                
+                <input type="submit" value="Create Operation">
+              </form>
+        </div>
     </div>
 </body>
 </html>
