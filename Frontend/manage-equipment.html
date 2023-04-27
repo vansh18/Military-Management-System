@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="manage-equipment.css">
+		<title>Manage Equipment</title>
+	</head>
+	<body>
+		<div class="box">
+			<div class="form-container">
+				<div class="heading">
+					<h2>Manage <span>Equipment</span></h2>
+					<p>Add, Allocate, Retire equipments</p>
+				</div>
+				<form>
+					<div class="input-container">
+						<label for="equipment" class="input-heading">Select Equipment</label>
+						<div class="checkboxes">
+							<div>
+								<input type="radio" id="firearms" name="equipment" value="Firearms" checked="checked">
+								<label for="firearms">Firearms</label>
+							</div>
+							<div>
+								<input type="radio" id="vehicles" name="equipment" value="Vehicles">
+								<label for="vehicles">Vehicles</label>
+							</div>
+							<div>
+								<input type="radio" id="medical" name="equipment" value="Medical Equipment">
+								<label for="medical">Medical Equipment</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="input-container">
+						<label for="action" class="input-heading">Select Action</label>
+					  	<div class="checkboxes">
+						  	<div>
+							  <input type="radio" id="add" name="action" value="Add" checked="checked">
+							  <label for="add">Add Firearms</label>
+							</div>
+							<div>
+								<input type="radio" id="allocate" name="action" value="Allocate">
+								<label for="allocate">Allocate Firearms</label>
+							</div>
+							<div>
+								<input type="radio" id="retire" name="action" value="Retire">
+								<label for="retire">Retire Firearms</label>
+							</div>
+					  	</div>
+					</div>
+
+					<div class="fields">
+						<div class="text-field">
+							<label for="name" class="input-heading">Enter Name</label>
+							<input type="text" id="name" name="name" autocomplete="off">
+						</div>
+						<div class="option-field">
+							<label for="quantity" class="input-heading">Select Quantity</label>
+							<select id="quantity" name="quantity">
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							</select>
+						  </div>
+					</div>
+					<div class="button">
+					  <input type="submit" value="Confirm">
+					</div>
+				  </form>
+			</div>
+		</div>
+	</body>
+</html>
