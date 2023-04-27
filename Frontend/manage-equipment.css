@@ -155,8 +155,8 @@ input[type="radio"]
 .radio-box:after
 {
     content: "";
-    height: 5.5px;
-    width: 6px;
+    height: 7px;
+    width: 7.25px;
     background: #CCCCCC;
     display: inline-block;
     position: absolute;
