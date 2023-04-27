@@ -172,7 +172,7 @@ textarea::-webkit-scrollbar-thumb
 input[type="submit"]
 {
     margin-bottom: 10px;
-    background-color: #FFA500;
+    background: #FFA500;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -182,11 +182,12 @@ input[type="submit"]
     font-weight: 600;
     cursor: pointer;
     float: right;
+    transition: .3s ease-in;
 }
 
 input[type="submit"]:hover
 {
-
+    background: #ff9100;
 }
   
 input[type="date"] 
@@ -195,6 +196,22 @@ input[type="date"]
     width: calc(50% - 5px);
     margin-right: 10px;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator 
+{
+    background-color: #FFA500;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+  
+input[type="date"]::-webkit-calendar-picker-indicator:hover 
+{
+    background-color: #ff9100;
+}
+  
   
   
 @media only screen and (max-width: 500px) 
