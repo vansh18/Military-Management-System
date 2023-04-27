@@ -99,6 +99,7 @@ form
 .radio-label
 {
     transition: 300ms ease-in-out 0s;
+    cursor: pointer;
 }
 
 input[type="text"],select
