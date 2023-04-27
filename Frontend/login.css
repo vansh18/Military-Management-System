@@ -124,3 +124,13 @@ form
     padding-left: 7px;
 }
 
+.fa-eye{
+    right: 325px;
+}
+
+.fa-eye-slash
+{
+    right: 324px;
+    display: none;
+}
+
