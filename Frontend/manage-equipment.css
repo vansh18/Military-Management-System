@@ -96,6 +96,11 @@ form
     justify-content: space-between;
 }
 
+.radio-label
+{
+    transition: 300ms ease-in-out 0s;
+}
+
 input[type="text"],select
 {
     background: none;
@@ -128,4 +133,51 @@ input[type="submit"]
 input[type="submit"]:hover
 {
     background: #ff9100;
+}
+
+input[type="radio"]
+{
+    display: none;
+}
+
+.radio-box
+{
+    display: inline-block;
+    position: relative;
+    height: 16px;
+    width: 16px;
+    border: 2px solid #CCCCCC;
+    border-radius: 3px;
+    top: 3px;
+}
+
+.radio-box:after
+{
+    content: "";
+    height: 5.5px;
+    width: 6px;
+    background: #CCCCCC;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-40%,-50%) scale(0);
+    border-radius: .5px;
+    transition: 300ms ease-in-out 0s;
+}
+
+input[type="radio"]:checked ~ .radio-box:after
+{
+    transform: translate(-50%,-50%) scale(1);
+    background-color: #FFA500;
+}
+
+input[type="radio"]:checked ~ .radio-box
+{
+    border: 2px solid #FFA500;
+}
+
+input[type="radio"]:checked ~ .radio-label
+{
+    color: #FFA500;
 }
