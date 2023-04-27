@@ -16,22 +16,111 @@ html
 body
 {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
-    background: url(/images/background.png);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     height: 100%;
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
 }
 
 .box
-
 {
-    width: 620px;
-    height: 420px;
+    width: 333px;
+    height: 85%;
     background: rgba(34, 73, 113, 0.65);
     border-radius: 20px;
 
 }
+
+label
+{
+    display: block;
+    color: white;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+input[type=textbox], input[type=password]
+{
+    width: 220px;
+    height: 30px;
+    padding: 8x 10px;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 5px;
+    color: white;
+    padding-left: 20px;
+}
+
+input:focus,select:focus 
+{
+    outline: none;
+}
+
+.login-button:hover
+{
+    opacity: 0.8;
+}
+
+form
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.login-button
+{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #FFA500;
+    color: white;
+    font-weight:600;
+    border: none;
+    cursor: pointer;
+}
+
+.input-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.form-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.password
+{
+    margin-bottom: 18px;
+}
+
+.input-container i
+{
+    position: absolute;
+    padding-top: 40.5px;
+    padding-left: 7px;
+}
+

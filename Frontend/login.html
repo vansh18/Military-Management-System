@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="login.css">
     <title>Login</title>
 </head>
-<body>
+<body style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(/images/background.png);background-size: cover; background-position: center;"> 
     <div class="box">
+        <div class="heading-container"> 
 
+        </div>
+        <form action="">
+            <div class="form-container">
+                <div class="input-container">
+                    <label for="user-id"> User ID</label>
+                    <input class="user-id" type="textbox" required autocomplete="off">
+                    <i class="fa fa-user fa-sm" style="color: white;" aria-hidden="true"></i>
+                </div>
+                <div class="input-container">
+                    <label for="password"> Password </label>
+                    <i class="pass-icon"></i>
+                    <input class="password" type="password"  required autocomplete="off">
+                    <i class="fa fa-key fa-sm" style="color: white";aria-hidden="true"></i>
+                </div>
+                <div class="button">
+                    <input class="login-button" type="submit" value="Login">
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>
