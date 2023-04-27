@@ -1,0 +1,66 @@
+.accordian
+{
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: Arial, Arial, Helvetica;
+    background: #009578;
+}
+
+.accordian_label,
+.accordian_content 
+{
+    padding: 14px 20px;
+}
+
+.accordian_label
+{
+    display: block;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.1s;
+
+}
+
+.accordian_label:hover
+{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.accordian_label::after
+{
+    content: "^";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    width: 12px;
+    height: 6px;
+    background-size: contain;
+    transition: transform 0.4s;
+}
+
+.accordian_content
+{
+    background: white;
+    line-height: 1.6;
+    font-size: 0.85em;
+    display: none;
+}
+
+.accordian__input
+{
+    display: none;
+}
+/*when input checked then select content*/
+
+.accordian__input:checked ~ .accordian_content
+{
+    display: block;
+}
+.accordian__input:checked ~ .accordian_label::after
+{
+    transform: translateY(-50%) rotate(0.5turn);
+}
