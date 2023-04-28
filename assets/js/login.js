@@ -17,7 +17,7 @@ function login(url) {
             if (response.success) {
             // Update the UI based on the response
             console.log("Login successful");
-            window.location.href = '<?php echo BASE_URL."home"; ?>'; // Redirect to the main page
+            window.location.href = '<?php echo BASE_URL."home"; ?>'; // Redirect to the main page(modify it to remove php tag
           } 
           else {
             $('#error-message').text("Invalid email or password. Please try again."); // Display error message

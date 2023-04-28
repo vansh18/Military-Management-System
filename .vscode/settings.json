@@ -1,3 +1,7 @@
 {
-	"cSpell.words": ["checkmark", "Jeet"]
+	"cSpell.words": [
+		"checkmark",
+		"Jeet"
+	],
+	"liveServer.settings.port": 5501
 }
