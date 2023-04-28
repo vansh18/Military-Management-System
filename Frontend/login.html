@@ -25,14 +25,30 @@
                     <i class="pass-icon"></i>
                     <input class="password" type="password"  required autocomplete="off">
                     <i class="fa fa-key fa-sm" style="color: white";aria-hidden="true"></i>
-                    <i class="fa fa-eye fa-sm" id="icon3" style="color: white";aria-hidden="true"></i>
-                    <i class="fa fa-eye-slash fa-sm" style="color:white" aria-hidden="true"></i>
                 </div>
                 <div class="button">
-                    <input class="login-button" type="submit" value="Login">
+                    <button class="login-button" type="button" value="Login" onclick="login();">Login</button>
+                </div>
+                <div class="error-msg" id="error-msg">
+                    <span id="error">
+                        <!-- alan add error message into javascript below and keep this empty ikuk but stil -->
+                    </span>
+                 </span>
                 </div>
             </div>
         </form>
     </div>
+    <script>
+        function login()
+        {
+        var error = document.getElementById("error");
+        var username = document.getElementsByClassName("user-id")[0].value;
+        if(username == 'a'){
+        console.log("hi")
+        document.getElementById('error-msg').style.display = 'flex';
+        error.innerHTML = "Username or Password entered is wrong. Please try again"
+        }
+    }
+    </script>
 </body>
 </html>
