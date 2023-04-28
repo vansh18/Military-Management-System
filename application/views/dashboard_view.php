@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="div5 child"> 
       <div class="orders-heading">
-        <h2>Orders</h2>
+        <h2>Incoming <span>Orders</span></h2>
       </div>
       <div class="orders">
         <a href="#" class="order-container">
