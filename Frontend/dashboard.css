@@ -264,6 +264,18 @@ tr td:first-child
     color: #EAF2FF;
 }
 
+.recent-operation tr:hover
+{
+    background: rgba(34, 73, 113, 1);
+    cursor: pointer;
+}
+
+.recent-operation th:hover
+{
+    background: rgba(34, 73, 113, 0);  
+    cursor: default;
+}
+
 .table-container 
 {
     height: 100%;
