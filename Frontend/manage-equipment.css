@@ -109,10 +109,15 @@ input[type="text"],select
     border: 2px solid #45678A;
     border-radius: 4px;
     padding: 5px;
-    color: #EAF2FF;
+    color: #FFA500;
     font-size: 16px;
     font-weight: 600;
     width: 220px;
+}
+
+.quantity-list
+{
+    background-color: rgba(34, 73, 113, 1.1);
 }
 
 input[type="submit"]
