@@ -42,17 +42,17 @@
 						  	<div>
 							  <input type="radio" id="add" name="action" value="Add" checked="checked">
 							  <span class="radio-box"></span>
-							  <label for="add" class="radio-label">Add Firearms</label>
+							  <label for="add" class="radio-label" id="add-firearms">Add Firearms</label>
 							</div>
 							<div>
 								<input type="radio" id="allocate" name="action" value="Allocate">
 								<span class="radio-box"></span>
-								<label for="allocate" class="radio-label">Allocate Firearms</label>
+								<label for="allocate" class="radio-label" id="allocate-firearms">Allocate Firearms</label>
 							</div>
-							<div>
+							<div id="last-button-retire">
 								<input type="radio" id="retire" name="action" value="Retire">
 								<span class="radio-box"></span>
-								<label for="retire" class="radio-label">Retire Firearms</label>
+								<label for="retire" class="radio-label" id="retire-firearms">Retire Firearms</label>
 							</div>
 					  	</div>
 					</div>
@@ -80,4 +80,38 @@
 			</div>
 		</div>
 	</body>
+	<script>
+					
+			const firearmsCheckbox = document.getElementById("firearms");
+			const vehiclesCheckbox = document.getElementById("vehicles");
+			const medicalCheckbox = document.getElementById("medical");
+			var add= document.getElementById("add")
+			var allocate= document.getElementById("allocate")
+			var retire= document.getElementById("retire")
+
+			firearmsCheckbox.addEventListener("change", function() {
+					document.getElementById("add-firearms").innerHTML = "Add Firearms";
+					document.getElementById("allocate-firearms").innerHTML = "Allocate Firearms";
+					document.getElementById("retire-firearms").innerHTML = "Retire Firearms";
+					document.getElementById("last-button-retire").style.display = "flex";	
+			});
+
+			vehiclesCheckbox.addEventListener("change", function() {
+					document.getElementById("add-firearms").innerHTML = "Add Vehicles";
+					document.getElementById("allocate-firearms").innerHTML = "Allocate Vehicles";
+					document.getElementById("retire-firearms").innerHTML = "Retire Vehicles";
+					document.getElementById("last-button-retire").style.display = "flex";	
+			});
+						
+
+
+			medicalCheckbox.addEventListener("change", function() {
+					document.getElementById("add-firearms").innerHTML = "Add Meds";
+					document.getElementById("allocate-firearms").innerHTML = "Allocate Meds";
+					document.getElementById("retire-firearms").innerHTML = "Retire Meds";
+					document.getElementById("last-button-retire").style.display = "none";	
+			});
+			
+			
+	</script>
 </html>
