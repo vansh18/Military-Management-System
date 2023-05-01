@@ -27,15 +27,13 @@ body
 }
 .left
 {
-
     position: relative;
     width: 50%;
     height: 100%;
-
 }
 .right
 {
-    background-color: rgba(34, 73, 113, 0.65);
+    background-color: #003366;
     position: relative;
     width: 50%;
     height: 100%;
@@ -79,7 +77,6 @@ input:focus,select:focus
     height: 85%;
     background: rgba(34, 73, 113, 0.65);
     border-radius: 20px;
-
 }
 
 form
