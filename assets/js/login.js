@@ -6,7 +6,7 @@ function login(url) {
     var password = $("#password_box").val();
     var hashedPassword = CryptoJS.SHA256(password).toString();
     $.ajax({
-        url: url,
+        url: url+"validate-user",
         type: "POST",
         data: {
             email: email,
@@ -17,11 +17,11 @@ function login(url) {
             if (response.success) {
             // Update the UI based on the response
             console.log("Login successful");
-            window.location.href = '<?php echo BASE_URL."home"; ?>'; // Redirect to the main page(modify it to remove php tag
+            window.location.href = url+"dashboard"; // Redirect to the main page(modify it to remove php tag
           } 
           else {
-            $('#error-message').text("Invalid email or password. Please try again."); // Display error message
-            $(".error-message").css("display", "block");
+            document.getElementById('error-msg').style.display = 'flex';
+            error.innerHTML = "Username or Password entered is wrong. Please try again" // Display error message
           }
             // console.log(response.email);
             // console.log(response.password);
