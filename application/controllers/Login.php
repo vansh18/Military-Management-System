@@ -10,11 +10,14 @@ class Login extends CI_Controller {
     }
 	public function index()
 	{
-		$this->load->view("login_view.php");
+		if(!isset($_SESSION['userid']))
+			$this->load->view("login_view.php");
+		else	
+			redirect(""); //redirects to dashboard if user is already logged in
 	}
 	public function validate_user()
 	{
-		if(isset($_POST['userid']) && isset($_POST['password']))
+		if(isset($_POST['userid']))
 		{
 			$userid = $_POST['userid'];
 			$password = $_POST['password'];
@@ -23,6 +26,7 @@ class Login extends CI_Controller {
 			{
 				$response['status'] = 200;
 				$response['msg'] = 'login successful';
+				$this->LoginModel->create_session($userid);
 			}
 			else
 			{
@@ -31,5 +35,12 @@ class Login extends CI_Controller {
 			}
 			echo json_encode($response);
 		}
+		else
+			echo 'Invalid';
+	}
+	public function user_logout()
+	{
+		$this->LoginModel->destroy_session();
+		redirect('login');
 	}
 }
