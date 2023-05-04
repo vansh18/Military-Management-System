@@ -11,7 +11,29 @@
     <img src="/images/watermark.png" alt="" class="watermark">
 	<a href="dashboard.html" class="back-btn">Back</a>
     <div class="box">
-        
+        <div class="form-container">
+            <div class="heading">
+                <h2>Give <span>Order</span></h2>
+                <p>Give new orders to battalion under you</p>
+            </div>
+            <form>
+                <div class="input-container">
+                    <label for="equipment" class="input-heading">Select Order Type</label>
+                    <div class="checkboxes">
+                        <div>
+                            <input type="radio" id="firearms" name="equipment" value="Firearms" checked="checked">
+                            <span class="radio-box"></span>
+                            <label for="firearms" class="radio-label">Predefined Order</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="vehicles" name="equipment" value="Vehicles">
+                            <span class="radio-box"></span>
+                            <label for="vehicles" class="radio-label">Custom Order</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>

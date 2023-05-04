@@ -98,6 +98,7 @@ body
 .div5 
 { 
     grid-area: 1 / 5 / 6 / 6; 
+    outline: 2px solid white;
 }
 
 .div6 
@@ -363,12 +364,18 @@ tr td:first-child
     font-weight: 500;
 }
 
+.incoming-orders
+{
+    outline: 2px solid white;
+    height: 50%;
+}
+
 .orders-heading
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 10px;
+    padding: 0px 5px;
 }
 
 .orders-heading h2
@@ -388,12 +395,12 @@ tr td:first-child
     color: #999999;
     font-weight: 500;
     font-size: 12px;
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 .orders
 {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .order-container
