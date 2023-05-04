@@ -27,6 +27,13 @@ class LoginModel extends CI_Model
         $query=$this->db->get();
         $result=$query->row_array();
         $_SESSION['user_info'] = $result;
+        $this->db->select('Rank_name');
+        $this->db->from("Ranks");
+        $this->db->where("Rank_id",$result['Rank_id']);
+        $query=$this->db->get();
+        $rank=$query->row_array();
+        $_SESSION['user_info']['rank'] = $rank['Rank_name'];
+        // add rank to session variables
     }
     public function destroy_session()
     {

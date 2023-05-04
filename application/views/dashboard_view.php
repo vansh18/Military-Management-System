@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="parent">
     <div class="div1 child">
        <div class="menu">
-        <a href="profile.html" class="profile">
+        <a href="<?php echo BASE_URL.'profile';?>" class="profile">
           <img src="<?php echo ASSETS.'/images/profile.jpg';?>" alt="profile-img" class="profile-img">
         </a>
         <a href="dashboard.html" class="home">

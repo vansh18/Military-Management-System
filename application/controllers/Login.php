@@ -43,4 +43,13 @@ class Login extends CI_Controller {
 		$this->LoginModel->destroy_session();
 		redirect('login');
 	}
+	public function test()
+	{
+		print_r($_SESSION);
+		// Returns-
+		// Array ( [__ci_last_regenerate] => 1683043047 [status] => loggedin [userid] => 7 [user_info] => 
+		// Array ( [User_id] => 7 [User_name] => John Wick [Rank_id] => 1 [DOB] => 1964-09-02 [Age] => 59 
+		// [Joining_date] => 1985-04-10 [Retirement_date] => 2022-04-29 [Cur_Status] => retired 
+		// [Contact] => 8909876545 [Blood_group] => O+ [post] => New York Continental [rank] => Brigadier ) )
+	}
 }

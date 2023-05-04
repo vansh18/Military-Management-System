@@ -25,16 +25,24 @@ body
     text-align: center;
     justify-content: center;
 }
-
-.box
+.left
 {
-    width: 333px;
-    height: 85%;
-    background: rgba(34, 73, 113, 0.65);
-    border-radius: 20px;
+
+    position: relative;
+    width: 50%;
+    height: 100%;
 
 }
-
+.right
+{
+    background-color: rgba(34, 73, 113, 0.65);
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 label
 {
     display: block;
@@ -63,6 +71,15 @@ input:focus,select:focus
 .login-button:hover
 {
     opacity: 0.8;
+}
+
+.box
+{
+    width: 333px;
+    height: 85%;
+    background: rgba(34, 73, 113, 0.65);
+    border-radius: 20px;
+
 }
 
 form
@@ -125,12 +142,13 @@ form
 }
 
 .fa-eye{
-    right: 325px;
+    position: relative;
+    right: 220px;
 }
 
 .fa-eye-slash
 {
-    right: 324px;
+    right: 220px;
     display: none;
 }
 .error-msg
