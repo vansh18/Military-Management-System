@@ -389,6 +389,11 @@ tr td:first-child
     display: inline-block;
 }
 
+.orders-heading h2 span
+{
+    color: #FFA500;
+}
+
 .div5 a 
 {
     text-decoration: none;
@@ -403,7 +408,7 @@ tr td:first-child
     margin-top: 10px;
 }
 
-.order-container
+.incoming-order-container
 {
     display: flex;
     justify-content: flex-start;
@@ -412,13 +417,27 @@ tr td:first-child
     transition: .1s ease-in-out;
 }
 
-.order-container:hover
+.incoming-order-container:hover
 {
-    background: rgba(34, 73, 113, 1);
+    background: rgb(34, 73, 113);
     border-radius: 10px;
 }
 
-.order-container img
+.outgoing-order-container
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 10px 0px 0px;
+    transition: .1s ease-in-out;
+}
+
+.outgoing-order-container:hover
+{
+    cursor: auto;
+}
+
+.incoming-order-container img, .outgoing-order-container img
 {
     width: 50px;
     height: 50px;

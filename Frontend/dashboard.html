@@ -58,14 +58,14 @@
           <h2>Incoming <span>Orders</span></h2>
         </div>
         <div class="orders">
-          <a href="#" class="order-container">
+          <a href="#" class="incoming-order-container">
             <img src="/images/bell.png" alt="bell-img">
             <div class="order-text">
               <p class="order">Prepare for War</p>
               <p class="order-date">April 20<sup>th</sup></p>
             </div>
           </a>
-          <a href="#" class="order-container">
+          <a href="#" class="incoming-order-container">
             <img src="/images/bell.png" alt="bell-img">
             <div class="order-text">
               <p class="order">Prepare for War</p>
@@ -79,14 +79,14 @@
           <h2>Outgoing <span>Orders</span></h2>
         </div>
         <div class="orders">
-          <a href="#" class="order-container">
+          <a href="#" class="outgoing-order-container">
             <img src="/images/bell.png" alt="bell-img">
             <div class="order-text">
               <p class="order">Prepare for War</p>
               <p class="order-date">April 20<sup>th</sup></p>
             </div>
           </a>
-          <a href="#" class="order-container">
+          <a href="#" class="outgoing-order-container">
             <img src="/images/bell.png" alt="bell-img">
             <div class="order-text">
               <p class="order">Prepare for War</p>
@@ -196,4 +196,31 @@
     </div>
   </div>
 </body>
+<script>
+// Get all elements with class name "incoming-order-container"
+const orders = document.querySelectorAll(".incoming-order-container");
+
+// Loop through each element and add a click event listener
+orders.forEach((order) => {
+  order.addEventListener("click", () => {
+    // Get the image element inside the clicked element
+    const image = order.querySelector("img");
+
+    // Check the current image source
+    if (image.getAttribute("src") === "/images/bell.png") {
+      // If it's the bell image, change it to the thumb image
+      image.setAttribute("src", "/images/thumb.png");
+      // Change the background color of the order container
+      order.style.background = "rgb(34, 73, 113)";
+    } else {
+      // If it's the thumb image, change it back to the bell image
+      image.setAttribute("src", "/images/bell.png");
+      // Change the background color of the order container back to its original value
+      order.style.background = "";
+    }
+  });
+});
+
+
+</script>
 </html>
