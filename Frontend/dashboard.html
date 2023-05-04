@@ -73,6 +73,9 @@
             </div>
           </a>
         </div>
+        <div class="button" id="button">
+          <button>Done</button>
+        </div>
       </div>
       <div class="outgoing-orders">
         <div class="orders-heading">
@@ -197,30 +200,27 @@
   </div>
 </body>
 <script>
-// Get all elements with class name "incoming-order-container"
 const orders = document.querySelectorAll(".incoming-order-container");
+const order_button = document.getElementById("button");
 
-// Loop through each element and add a click event listener
 orders.forEach((order) => {
   order.addEventListener("click", () => {
-    // Get the image element inside the clicked element
     const image = order.querySelector("img");
-
-    // Check the current image source
     if (image.getAttribute("src") === "/images/bell.png") {
-      // If it's the bell image, change it to the thumb image
+      order_button.style.display = "none";
       image.setAttribute("src", "/images/thumb.png");
-      // Change the background color of the order container
       order.style.background = "rgb(34, 73, 113)";
     } else {
-      // If it's the thumb image, change it back to the bell image
       image.setAttribute("src", "/images/bell.png");
-      // Change the background color of the order container back to its original value
       order.style.background = "";
+    }
+    if (document.querySelector(".incoming-order-container img[src='/images/thumb.png']")) {
+      order_button.style.display = "flex";
+    } else {
+      order_button.style.display = "none";
     }
   });
 });
-
 
 </script>
 </html>
