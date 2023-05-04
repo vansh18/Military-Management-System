@@ -9,9 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="<?php echo ASSETS.'css/login.css';?>">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="<?php echo ASSETS.'js/login.js';?>"></script>
     <title>Login</title>
 </head>
@@ -30,32 +28,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="input-container">
                     <label for="password"> Password </label>
                     <i class="pass-icon"></i>
-                    <input class="password" type="password"  required autocomplete="off">
+                    <input class="password" type="password" required autocomplete="off">
                     <i class="fa fa-key fa-sm" style="color: white";aria-hidden="true"></i>
+                    <i class="fa fa-eye fa-sm" style="color: white";aria-hidden="true"></i>
+                    <i class="fa fa-eye-slash fa-sm" style="color: white";aria-hidden="true"></i>
                 </div>
                 <div class="button">
-                    <button class="login-button" type="button" value="Login" onclick="login(<?php echo BASE_URL;?>)">Login</button>
+                    <button class="login-button" type="button" value="Login" onclick="login('<?php echo BASE_URL;?>');">Login</button>
                 </div>
                 <div class="error-msg" id="error-msg">
                     <span id="error">
-                        <!-- alan add error message into javascript below and keep this empty ikuk but stil -->
                     </span>
                  </span>
                 </div>
             </div>
         </form>
     </div>
-    <script>
-    //     function login()
-    //     {
-    //     var error = document.getElementById("error");
-    //     var username = document.getElementsByClassName("user-id")[0].value;
-    //     if(username == 'a'){
-    //     console.log("hi")
-    //     document.getElementById('error-msg').style.display = 'flex';
-    //     error.innerHTML = "Username or Password entered is wrong. Please try again"
-    //     }
-    // }
-    </script>
 </body>
 </html>

@@ -12,12 +12,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
   <img src="<?php echo ASSETS.'/images/watermark.png';?>" alt="" class="watermark">
-  <h1 class="welcome"><span class="welcome-text">Welcome,</span> <span class="name-text">Sergeant Smith!</span></h1>
+  <h1 class="welcome"><span class="welcome-text">Welcome,</span> <span class="name-text"><?php echo $_SESSION['user_info']['User_name'];?></span></h1>
 
   <div class="parent">
     <div class="div1 child">
        <div class="menu">
-        <a href="profile.html" class="profile">
+        <a href="<?php echo BASE_URL.'profile';?>" class="profile">
           <img src="<?php echo ASSETS.'/images/profile.jpg';?>" alt="profile-img" class="profile-img">
         </a>
         <a href="dashboard.html" class="home">
@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="armory.html" class="armory">
           <img src="<?php echo ASSETS.'/images/armory.png';?>" alt="gun-img">
         </a>
-        <a href="#" class="logout">
+        <a href="<?php echo BASE_URL.'logout';?>" class="logout">
           <img src="<?php echo ASSETS.'/images/logout.png';?>" alt="logout-img" class="logout-img">
         </a>
        </div>
