@@ -78,7 +78,13 @@
 					<div class="fields" id="assignee-box">
 						<div class="text-field">
 							<label for="allocate retire" class="input-heading">Select Assignee</label>
-							<input type="text" id="assignee" autocomplete="off">
+							<select id="assignee" name="quantity" class="quantity-list">
+								<option value="1">Person 1</option>
+								<option value="2">Person 2</option>
+								<option value="3">Person 3</option>
+								<option value="4">Person 4</option>
+								<option value="5">Person 5</option>
+							  </select>
 						</div>
 					</div>
 					<div class="button">
@@ -127,6 +133,11 @@
 		});
 
 		add.addEventListener("change", function() 
+		{
+			document.getElementById("assignee-box").style.display = "none";
+		});
+
+		retire.addEventListener("change", function() 
 		{
 			document.getElementById("assignee-box").style.display = "none";
 		});
