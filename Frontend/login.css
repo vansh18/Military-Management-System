@@ -49,7 +49,7 @@ label
     margin-bottom: 5px;
 }
 
-input[type=textbox], input[type=password]
+input[type=textbox], input[type=password], input[type=text]
 {
     width: 220px;
     height: 30px;
@@ -138,18 +138,29 @@ form
     padding-left: 7px;
 }
 
+.eye{
+    width: 20px;
+    position: absolute;
+    transform: translate(230px,58px);
+    background: none;
+    cursor: pointer;
+}
+
+
 .fa-eye{
     position: relative;
-    right: 220px;
-    cursor: pointer;
+    right: 40px;
+    bottom: 17px;
 }
 
 .fa-eye-slash
 {
-    right: 220px;
     display: none; 
-    cursor: pointer;
+    right: 40px;
+    bottom: 17px;
 }
+
+
 .error-msg
 {
 background:rgba(116, 160, 196, 0.65);
@@ -166,5 +177,6 @@ padding-bottom: 5px;
 text-align: left;
 color: #EAF2FF;
 border-radius: 10px;
+
 }
 
