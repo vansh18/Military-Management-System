@@ -11,7 +11,8 @@ class Dashboard extends CI_Controller
     }
     public function index()
     {
-        $this->load->view("dashboard_view.php");
+        $bat = $this->OperationModel->get_batallions();
+        $this->load->view("dashboard_view.php",array('battalion_list' => $bat));
     }
     public function profile()
     {
@@ -35,8 +36,7 @@ class Dashboard extends CI_Controller
         {
             // get all batallions under the user's brigade
             $bat = $this->OperationModel->get_batallions();
-
-            $this->load->view("create_operation_view.php",array('battalion_list' => $bat[0]));
+            $this->load->view("create_operation_view.php",array('battalion_list' => $bat));
         }
     }
     public function add_operation()
