@@ -75,6 +75,18 @@
 							</select>
 						  </div>
 					</div> 
+					<div class="fields" id="assignee-box">
+						<div class="text-field">
+							<label for="allocate retire" class="input-heading">Select Assignee</label>
+							<select id="assignee" name="quantity" class="quantity-list">
+								<option value="1">Person 1</option>
+								<option value="2">Person 2</option>
+								<option value="3">Person 3</option>
+								<option value="4">Person 4</option>
+								<option value="5">Person 5</option>
+							  </select>
+						</div>
+					</div>
 					<div class="button">
 					  <input type="submit" value="Confirm">
 					</div>
@@ -82,38 +94,52 @@
 			</div>
 		</div>
 	</body>
-	<script>
-					
-			const firearmsCheckbox = document.getElementById("firearms");
-			const vehiclesCheckbox = document.getElementById("vehicles");
-			const medicalCheckbox = document.getElementById("medical");
-			var add= document.getElementById("add")
-			var allocate= document.getElementById("allocate")
-			var retire= document.getElementById("retire")
+	<script>		
+		const firearmsCheckbox = document.getElementById("firearms");
+		const vehiclesCheckbox = document.getElementById("vehicles");
+		const medicalCheckbox = document.getElementById("medical");
 
-			firearmsCheckbox.addEventListener("change", function() {
-					document.getElementById("add-firearms").innerHTML = "Add Firearms";
-					document.getElementById("allocate-firearms").innerHTML = "Allocate Firearms";
-					document.getElementById("retire-firearms").innerHTML = "Retire Firearms";
-					document.getElementById("last-button-retire").style.display = "flex";	
-			});
+		var add= document.getElementById("add");
+		var allocate= document.getElementById("allocate");
+		var retire= document.getElementById("retire");
 
-			vehiclesCheckbox.addEventListener("change", function() {
-					document.getElementById("add-firearms").innerHTML = "Add Vehicles";
-					document.getElementById("allocate-firearms").innerHTML = "Allocate Vehicles";
-					document.getElementById("retire-firearms").innerHTML = " Retire Vehicles";
-					document.getElementById("last-button-retire").style.display = "flex";	
-			});
+		firearmsCheckbox.addEventListener("change", function() 
+		{
+			document.getElementById("add-firearms").innerHTML = "Add Firearms";
+			document.getElementById("allocate-firearms").innerHTML = "Allocate Firearms";
+			document.getElementById("retire-firearms").innerHTML = "Retire Firearms";
+			document.getElementById("last-button-retire").style.display = "flex";	
+		});
+
+		vehiclesCheckbox.addEventListener("change", function() 
+		{
+			document.getElementById("add-firearms").innerHTML = "Add Vehicles";
+			document.getElementById("allocate-firearms").innerHTML = "Allocate Vehicles";
+			document.getElementById("retire-firearms").innerHTML = " Retire Vehicles";
+			document.getElementById("last-button-retire").style.display = "flex";	
+		});
 						
+		medicalCheckbox.addEventListener("change", function() 
+		{
+			document.getElementById("add-firearms").innerHTML = "Add Meds";
+			document.getElementById("allocate-firearms").innerHTML = "Allocate Meds";
+			document.getElementById("retire-firearms").innerHTML = " Retire Meds";
+			document.getElementById("last-button-retire").style.display = "none";	
+		});
 
+		allocate.addEventListener("change", function() 
+		{
+			document.getElementById("assignee-box").style.display = "flex";
+		});
 
-			medicalCheckbox.addEventListener("change", function() {
-					document.getElementById("add-firearms").innerHTML = "Add Meds";
-					document.getElementById("allocate-firearms").innerHTML = "Allocate Meds";
-					document.getElementById("retire-firearms").innerHTML = " Retire Meds";
-					document.getElementById("last-button-retire").style.display = "none";	
-			});
-			
-			
+		add.addEventListener("change", function() 
+		{
+			document.getElementById("assignee-box").style.display = "none";
+		});
+
+		retire.addEventListener("change", function() 
+		{
+			document.getElementById("assignee-box").style.display = "none";
+		});
 	</script>
 </html>

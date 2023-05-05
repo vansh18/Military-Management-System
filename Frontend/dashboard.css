@@ -293,7 +293,7 @@ tr td:first-child
 {
     padding: 10px;
     text-align: left;
-    /* border-bottom: 1px solid #999999; */
+    border-bottom: 1px solid #999999;
     color: #EAF2FF;
 }
 
@@ -363,23 +363,51 @@ tr td:first-child
     font-weight: 500;
 }
 
+.order-container
+{
+    height: 50%;
+}
+
+.incoming-orders
+{
+    height: 60%;
+    overflow: auto;
+}
+
+.incoming-orders::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+.incoming-orders::-webkit-scrollbar-thumb 
+{
+    background: #ffffff60;
+    border-radius: calc(15px / 2);
+}
+
 .orders-heading
 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 10px;
+    padding: 0px 5px;
 }
 
 .orders-heading h2
 {
     position: relative;
     padding: 10px;
+    padding-bottom: 0px;
     color: #EAF2FF;
     font-size: 24px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     display: inline-block;
+}
+
+.orders-heading h2 span
+{
+    color: #FFA500;
 }
 
 .div5 a 
@@ -388,30 +416,69 @@ tr td:first-child
     color: #999999;
     font-weight: 500;
     font-size: 12px;
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 .orders
 {
-    margin-top: 15px;
+    margin-top: 10px;
+    overflow: auto;
 }
 
-.order-container
+.incoming-order-container
 {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin: 10px 10px 0px 0px;
     transition: .1s ease-in-out;
+    border-radius: 10px;
+    overflow: auto;
 }
 
-.order-container:hover
+.incoming-order-container:hover
 {
-    background: rgba(34, 73, 113, 1);
+    background: #224971;
     border-radius: 10px;
 }
 
-.order-container img
+.button
+{
+    position: relative;
+    margin: auto;
+    width: 90%;
+    display: none;
+    justify-content: flex-end;
+}
+
+.button button
+{
+    background: #FFA500;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.outgoing-order-container
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 10px 0px 0px;
+    transition: .1s ease-in-out;
+    overflow: auto;
+}
+
+.outgoing-order-container:hover
+{
+    cursor: auto;
+}
+
+.incoming-order-container img, .outgoing-order-container img
 {
     width: 50px;
     height: 50px;

@@ -163,7 +163,9 @@ input[type="date"]
 
 input[type="submit"]
 {
-    margin-bottom: 10px;
+    position: absolute;
+    right: 9%;
+    bottom: 4%;
     background: #FFA500;
     color: #fff;
     border: none;
