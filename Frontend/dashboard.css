@@ -463,6 +463,23 @@ tr td:first-child
     margin: 5px;
 }
 
+.outgoing-orders
+{
+    height: 60%;
+    overflow: auto;
+}
+
+.outgoing-orders::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+.outgoing-orders::-webkit-scrollbar-thumb 
+{
+    background: #ffffff60;
+    border-radius: calc(15px / 2);
+}
+
 .outgoing-order-container
 {
     display: flex;

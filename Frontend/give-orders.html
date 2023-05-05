@@ -36,7 +36,7 @@
                     <div class="fields" id="predefined-order-type">
 						<div class="text-field">
 							<label for="allocate retire" class="input-heading">Select Order</label>
-							<select id="order-type" name="quantity" class="quantity-list" onchange="check()">
+							<select id="order-type" name="quantity" class="quantity-list" onchange="check()" required>
 								<option value="1">Promote</option>
 								<option value="2">Demote</option>
 								<option value="3">Dismiss</option>
@@ -47,12 +47,12 @@
 					</div>
                     <div class="custom-order-container" id="custom-order-container">
                         <label for="custom-order" class="input-heading">Write your Order</label>
-                        <textarea name="custom-order" id="custom-order"> </textarea>
+                        <textarea name="custom-order" id="custom-order" required> </textarea>
                     </div>
                     <div class="soldier-info" id="soldier-info">
                         <div class="text-field">
 							<label for="name" class="input-heading">Select Soldier Rank</label>
-							<select id="rank" name="quantity" class="quantity-list">
+							<select id="rank" name="quantity" class="quantity-list" required>
                                 <option value="1">Rank 1</option>
                                 <option value="2">Rank 2</option>
                                 <option value="3">Rank 3</option>
@@ -62,7 +62,7 @@
 						</div>
 						<div class="option-field" id="option-field">
 							<label for="quantity" class="input-heading">Select Soldier Name</label>
-							<select id="soldier-name" name="quantity" class="quantity-list">
+							<select id="soldier-name" name="quantity" class="quantity-list" required>
 							  <option value="1">Sepoy Alan</option>
 							  <option value="2">Sepoy Ameya</option>
 							  <option value="3">Sepoy Hrishikesh</option>
@@ -73,7 +73,7 @@
                     <div class="subgroup-action" id="subgroup-action">
                         <div class="text-field">
 							<label for="name" class="input-heading">Select Leader Name</label>
-							<select id="leader_name" name="quantity" class="quantity-list">
+							<select id="leader_name" name="quantity" class="quantity-list" required>
                                 <option value="1">Leader 1</option>
                                 <option value="2">Leader 2</option>
                                 <option value="3">Leader 3</option>
@@ -83,7 +83,7 @@
 						</div>
 						<div class="subgroup_name" id="subgroup_name">
 							<label for="quantity" class="input-heading">Subgroup Name</label>
-							<select id="" name="quantity" class="quantity-list">
+							<select id="" name="quantity" class="quantity-list" required>
 							  <option value="1">Sepoy Alan</option>
 							  <option value="2">Sepoy Ameya</option>
 							  <option value="3">Sepoy Hrishikesh</option>
