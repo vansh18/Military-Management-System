@@ -31,9 +31,9 @@ body
     width: 50%;
     height: 100%;
 }
+
 .right
 {
-    background-color: #003366;
     position: relative;
     width: 50%;
     height: 100%;
@@ -141,12 +141,14 @@ form
 .fa-eye{
     position: relative;
     right: 220px;
+    cursor: pointer;
 }
 
 .fa-eye-slash
 {
     right: 220px;
-    display: none;
+    display: none; 
+    cursor: pointer;
 }
 .error-msg
 {

@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['validate-user'] = 'login/validate_user';
 $route['logout'] = 'login/user_logout';
 $route['profile'] = 'dashboard/profile';
+$route['create-operation'] = 'dashboard/create_operation';
+$route['add-operation'] = 'dashboard/add_operation';
