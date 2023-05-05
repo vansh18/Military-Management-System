@@ -168,15 +168,17 @@ body
 
 .accordian_label::after
 {
-    content: "^";
+    content: "";
     position: absolute;
     top: 50%;
     right: 20px;
     width: 12px;
-    height: 6px;
+    transform: translateY(-50%);
     background-size: contain;
-    transition: transform 0.4s;
-    /* outline: solid 2px red; */
+    background-repeat: no-repeat;
+    transition: transform 0.8s ease-in-out; /* add transition property with timing function */
+    transform-origin: center center; 
+    outline: solid 2px red;
 }
 
 .accordian_content
@@ -186,6 +188,7 @@ body
     line-height: 1.6;
     font-size: 0.85em;
     display: none;
+    transition: transofrm 0.8s ease-in-out;
 }
 
 .accordian__input
@@ -200,7 +203,9 @@ body
 }
 .accordian__input:checked ~ .accordian_label::after
 {
-    transform: rotate(180deg);
+    /* transform: rotate(180deg); */
+    transform: translateY(-50%) rotate(1turn);
+    transition: transform 0.8s ease-in-out; 
 }
 .div2::-webkit-scrollbar 
 {
