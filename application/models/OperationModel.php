@@ -13,10 +13,11 @@ class OperationModel extends CI_Model
     public function get_batallions()
     {
         try {
-            $this->db->select('Batallion1,Batallion2,Batallion3,Batallion4');
-            $this->db->from('Brigade');
-            $this->db->where('Brigade_commander',$_SESSION['user_info']['User_id']);
-            $query=$this->db->get();
+            // sql query to get battalions name and id, name is in batallions table and id is in brigade table
+            $sql = " SELECT Batallion.Batallion_name,Batallion.Batallion_id 
+            FROM Batallion INNER JOIN Brigade ON Batallion.Batallion_id=Brigade.Batallion1 OR Batallion.Batallion_id=Brigade.Batallion2 OR Batallion.Batallion_id=Brigade.Batallion3 OR Batallion.Batallion_id=Brigade.Batallion4
+            WHERE Brigade.Brigade_commander = ? ";
+            $query = $this->db->query($sql,$_SESSION['userid']);
             $result=$query->result_array();
             return $result;
         }

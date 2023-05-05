@@ -42,9 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php
                             $i=1;
                             foreach($battalion_list as $battalion){
-                                if(isset($battalion))
-                                echo "<option value='".$battalion."'>".'Batallion '.$i."</option>";
-                                $i++;
+                                if(isset($battalion['Batallion_id']))
+                                    echo "<option value='".$battalion['Batallion_id']."'>".$battalion['Batallion_name']."</option>";
                             }
                         ?>
                     </select>
