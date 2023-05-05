@@ -100,6 +100,13 @@ form
     gap: 40px;
 }
 
+.input-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .input-heading
 {
     display: block;
@@ -135,7 +142,7 @@ input[type="text"],select
     padding: 5px;
     color: #EAF2FF;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     width: 220px;
 }
 
@@ -214,7 +221,23 @@ input[type="radio"]:checked ~ .radio-label
     color: #FFA500;
 }
 
-#last-button-retire
+.custom-order-container
 {
-    gap: 5px;
+    display: none;
+    flex-direction: column;
+}
+
+textarea
+{
+    background: none;
+    outline: none;
+    border: 2px solid #45678A;
+    border-radius: 4px;
+    padding: 5px;
+    color: #EAF2FF;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    resize: none;
+    font-family: 'Inter', sans-serif;
 }

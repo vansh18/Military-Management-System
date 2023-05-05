@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="give-orders.css">
-    <title>Document</title>
+    <title>Give Orders</title>
 </head>
 <body>
     <img src="/images/watermark.png" alt="" class="watermark">
@@ -18,22 +18,59 @@
             </div>
             <form>
                 <div class="input-container">
-                    <label for="equipment" class="input-heading">Select Order Type</label>
-                    <div class="checkboxes">
-                        <div>
-                            <input type="radio" id="firearms" name="equipment" value="Firearms" checked="checked">
-                            <span class="radio-box"></span>
-                            <label for="firearms" class="radio-label">Predefined Order</label>
+                    <div class="order-type">
+                        <label for="equipment" class="input-heading">Select Order Type</label>
+                        <div class="checkboxes">
+                            <div>
+                                <input type="radio" id="firearms" name="equipment" value="Firearms" checked="checked">
+                                <span class="radio-box"></span>
+                                <label for="firearms" class="radio-label">Predefined Order</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="vehicles" name="equipment" value="Vehicles">
+                                <span class="radio-box"></span>
+                                <label for="vehicles" class="radio-label">Custom Order</label>
+                            </div>
                         </div>
-                        <div>
-                            <input type="radio" id="vehicles" name="equipment" value="Vehicles">
-                            <span class="radio-box"></span>
-                            <label for="vehicles" class="radio-label">Custom Order</label>
-                        </div>
+                    </div>
+                    <div class="fields" id="predefined-order-type">
+						<div class="text-field">
+							<label for="allocate retire" class="input-heading">Select Order</label>
+							<select id="order-type" name="quantity" class="quantity-list">
+								<option value="1">Order 1</option>
+								<option value="2">Order 2</option>
+								<option value="3">Order 3</option>
+								<option value="4">Order 4</option>
+								<option value="5">Order 5</option>
+							  </select>
+						</div>
+					</div>
+                    <div class="custom-order-container" id="custom-order-container">
+                        <label for="custom-order" class="input-heading">Write your Order</label>
+                        <textarea name="custom-order" id="custom-order"> </textarea>
+                    </div>
+                    <div class="button">
+                        <input type="submit" value="Confirm">
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </body>
+<script>
+    const predefined = document.getElementById("firearms");
+    const custom = document.getElementById("vehicles");
+    const custom_order_container = document.getElementById("custom-order-container");
+
+    custom.addEventListener("change", function() 
+    {
+		document.getElementById("custom-order-container").style.display = "flex";
+	});
+
+    predefined.addEventListener("change", function() 
+    {
+		document.getElementById("custom-order-container").style.display = "none";
+	});
+    
+</script>
 </html>
