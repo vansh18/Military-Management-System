@@ -28,19 +28,33 @@ body
 .left
 {
     position: relative;
-    width: 50%;
-    height: 100%;
+    width: 48%;
+    height: 100%;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.tank-image 
+{   
+    display: flex;
+    height: 80%;
+    max-width: 95%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 
 .right
 {
     position: relative;
-    width: 50%;
+    width: 53%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 label
 {
     display: block;
@@ -148,18 +162,18 @@ form
 
 
 .fa-eye{
-    position: relative;
+    position: absolute;
     right: 40px;
     bottom: 17px;
 }
 
 .fa-eye-slash
 {
+    position: absolute;
     display: none; 
     right: 40px;
     bottom: 17px;
 }
-
 
 .error-msg
 {
@@ -168,7 +182,7 @@ line-height: 1;
 display: none;
 position: relative;
 max-width: 175px;
-font-size: 10px;
+font-size: 12px;
 align-items: center;
 margin-top: 14px;
 padding: 10px;
