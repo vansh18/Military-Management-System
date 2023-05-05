@@ -36,12 +36,12 @@
                     <div class="fields" id="predefined-order-type">
 						<div class="text-field">
 							<label for="allocate retire" class="input-heading">Select Order</label>
-							<select id="order-type" name="quantity" class="quantity-list">
-								<option value="1">Order 1</option>
-								<option value="2">Order 2</option>
-								<option value="3">Order 3</option>
-								<option value="4">Order 4</option>
-								<option value="5">Order 5</option>
+							<select id="order-type" name="quantity" class="quantity-list" onchange="check()">
+								<option value="1">Promote</option>
+								<option value="2">Demote</option>
+								<option value="3">Dismiss</option>
+								<option value="4">Create Subgroup</option>
+								<option value="5">Remove Subgroup</option>
 							  </select>
 						</div>
 					</div>
@@ -49,6 +49,50 @@
                         <label for="custom-order" class="input-heading">Write your Order</label>
                         <textarea name="custom-order" id="custom-order"> </textarea>
                     </div>
+                    <div class="soldier-info" id="soldier-info">
+                        <div class="text-field">
+							<label for="name" class="input-heading">Select Soldier Rank</label>
+							<select id="rank" name="quantity" class="quantity-list">
+                                <option value="1">Rank 1</option>
+                                <option value="2">Rank 2</option>
+                                <option value="3">Rank 3</option>
+                                <option value="4">Rank 4</option>
+                                <option value="5">Rank 5</option>
+                              </select>
+						</div>
+						<div class="option-field" id="option-field">
+							<label for="quantity" class="input-heading">Select Soldier Name</label>
+							<select id="soldier-name" name="quantity" class="quantity-list">
+							  <option value="1">Sepoy Alan</option>
+							  <option value="2">Sepoy Ameya</option>
+							  <option value="3">Sepoy Hrishikesh</option>
+							  <option value="4">Sepoy Tanish</option>
+							</select>
+						  </div>
+                    </div>
+                    <div class="subgroup-action" id="subgroup-action">
+                        <div class="text-field">
+							<label for="name" class="input-heading">Select Leader Name</label>
+							<select id="leader_name" name="quantity" class="quantity-list">
+                                <option value="1">Leader 1</option>
+                                <option value="2">Leader 2</option>
+                                <option value="3">Leader 3</option>
+                                <option value="4">Leader 4</option>
+                                <option value="5">Leader 5</option>
+                              </select>
+						</div>
+						<div class="subgroup_name" id="subgroup_name">
+							<label for="quantity" class="input-heading">Subgroup Name</label>
+							<select id="" name="quantity" class="quantity-list">
+							  <option value="1">Sepoy Alan</option>
+							  <option value="2">Sepoy Ameya</option>
+							  <option value="3">Sepoy Hrishikesh</option>
+							  <option value="4">Sepoy Tanish</option>
+							</select>
+						  </div>
+                    </div>
+
+
                     <div class="button">
                         <input type="submit" value="Confirm">
                     </div>
@@ -65,12 +109,34 @@
     custom.addEventListener("change", function() 
     {
 		document.getElementById("custom-order-container").style.display = "flex";
+		document.getElementById("soldier-info").style.display = "none";
+		document.getElementById("predefined-order-type").style.display = "none";
+		document.getElementById("subgroup-action").style.display = "none";
 	});
 
     predefined.addEventListener("change", function() 
     {
 		document.getElementById("custom-order-container").style.display = "none";
+        document.getElementById("soldier-info").style.display = "flex";
+		document.getElementById("predefined-order-type").style.display = "flex";
 	});
+
+    function check() 
+    {
+        var order_type = document.getElementById("order-type").value;
+        if(order_type == 4 || order_type == 5 )
+        {
+            console.log("Create subgroup");
+            document.getElementById("soldier-info").style.display = "none";
+            document.getElementById("subgroup-action").style.display = "flex";
+
+        }
+        else
+        {
+            document.getElementById("soldier-info").style.display = "flex";
+            document.getElementById("subgroup-action").style.display = "none";
+        }
+    }
     
 </script>
 </html>

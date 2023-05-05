@@ -241,3 +241,15 @@ textarea
     resize: none;
     font-family: 'Inter', sans-serif;
 }
+
+.soldier-info
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.subgroup-action
+{
+    display: none;
+    justify-content: space-between;
+}
