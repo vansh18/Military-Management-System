@@ -4,12 +4,13 @@ function login(url) {
     var loginurl = url+"validate-user";
     var userid = $(".user-id").val();
     var password = $(".password").val();
+    var hashedPassword = CryptoJS.SHA256(password).toString();
     $.ajax({
         url: loginurl,
         type: "POST",
         data: {
             userid: userid,
-            password: password
+            password: hashedPassword
         },
         success: function(response) {
             // Handle the response from the server

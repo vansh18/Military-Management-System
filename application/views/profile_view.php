@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <a href="<?php echo BASE_URL.'profile';?>" class="profile">
                         <img src="<?php echo ASSETS.'/images/profile.jpg';?>" alt="profile-img" class="profile-img">
                     </a>
-                    <a href="dashboard.html" class="home">
+                    <a href="<?php echo BASE_URL.'dashboard';?>" class="home">
                         <img src="<?php echo ASSETS.'/images/home.png';?>" alt="home-img" class="home-img">
                     </a>
                     <a href="give-order.html" class="give-order">

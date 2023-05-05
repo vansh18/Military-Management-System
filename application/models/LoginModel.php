@@ -40,5 +40,13 @@ class LoginModel extends CI_Model
         session_unset();
         session_destroy();
     }
+    public function call_proc()
+    {
+        $query = "CALL demote(?)";
+        if($this->db->query($query,8))
+            echo 'yay';
+        else    
+            echo'nay';
+    }
 }
 ?>
