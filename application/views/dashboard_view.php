@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
   <img src="<?php echo ASSETS.'/images/watermark.png';?>" alt="" class="watermark">
-  <h1 class="welcome"><span class="welcome-text">Welcome,</span> <span class="name-text"><?php echo $_SESSION['user_info']['User_name'];?></span></h1>
+  <h1 class="welcome"><span class="welcome-text">Welcome,</span> <span class="name-text"><?php echo $_SESSION['user_info']['rank'].' '.$_SESSION['user_info']['User_name'];?></span></h1>
 
   <div class="parent">
     <div class="div1 child">
@@ -20,13 +20,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <a href="<?php echo BASE_URL.'profile';?>" class="profile">
             <img src="<?php echo ASSETS.'/images/profile.jpg';?>" alt="profile-img" class="profile-img">
           </a>
-          <a href="dashboard.html" class="home">
+          <a href="<?php echo BASE_URL.'create-operation';?>" class="home">
             <img src="<?php echo ASSETS.'/images/home.png';?>" alt="home-img" class="home-img">
           </a>
           <a href="give-order.html" class="give-order">
             <img src="<?php echo ASSETS.'/images/phone.png';?>" alt="phone-img">
           </a>
-          <a href="create-operation.html" class="folder">
+          <a href="<?php echo BASE_URL.'create-operation';?>" class="folder">
             <img src="<?php echo ASSETS.'/images/folder.png';?>" alt="folder-img">
           </a>
           <a href="armory.html" class="armory">
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
     <div class="div2 child"> 
-      <a href="create-operation.html" class="content">
+      <a href="<?php echo BASE_URL.'create-operation';?>" class="content">
         <img src="<?php echo ASSETS.'/images/folder.png';?>" alt="folder-img">
         Create Operation
       </a>
