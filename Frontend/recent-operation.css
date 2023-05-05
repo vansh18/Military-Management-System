@@ -154,7 +154,7 @@ body
 .accordian_label
 {
     display: block;
-    color: #FFA500;
+    color: white;
     font-weight: 600;
     cursor: pointer;
     position: relative;
@@ -165,6 +165,11 @@ body
 {
     background-color: rgba(0, 0, 0, 0.1);
 }
+.accordian__input:checked~.accordian_label
+{
+    color: #FFA500;
+    transition: color 0.2s;
+}
 
 .accordian_label::after
 {
@@ -173,12 +178,13 @@ body
     top: 50%;
     right: 20px;
     width: 12px;
+    height: 15%;
     transform: translateY(-50%);
+    background: url(/images/down.png);
     background-size: contain;
     background-repeat: no-repeat;
-    transition: transform 0.8s ease-in-out; /* add transition property with timing function */
+    transition: transform 0.5s ease-in-out;
     transform-origin: center center; 
-    outline: solid 2px red;
 }
 
 .accordian_content
@@ -194,6 +200,7 @@ body
 .accordian__input
 {
     display: none;
+    transition: display 1s;
 }
 /*when input checked then select content*/
 
@@ -204,8 +211,8 @@ body
 .accordian__input:checked ~ .accordian_label::after
 {
     /* transform: rotate(180deg); */
-    transform: translateY(-50%) rotate(1turn);
-    transition: transform 0.8s ease-in-out; 
+    transform: translateY(-50%) rotate(0.5turn);
+    transition: transform 0.5s ease-in-out; 
 }
 .div2::-webkit-scrollbar 
 {
