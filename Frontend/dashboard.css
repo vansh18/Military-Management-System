@@ -363,9 +363,26 @@ tr td:first-child
     font-weight: 500;
 }
 
-.incoming-orders
+.order-container
 {
     height: 50%;
+}
+
+.incoming-orders
+{
+    height: 60%;
+    overflow: auto;
+}
+
+.incoming-orders::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+.incoming-orders::-webkit-scrollbar-thumb 
+{
+    background: #ffffff60;
+    border-radius: calc(15px / 2);
 }
 
 .orders-heading
@@ -380,6 +397,7 @@ tr td:first-child
 {
     position: relative;
     padding: 10px;
+    padding-bottom: 0px;
     color: #EAF2FF;
     font-size: 24px;
     font-family: 'Inter', sans-serif;
@@ -404,6 +422,7 @@ tr td:first-child
 .orders
 {
     margin-top: 10px;
+    overflow: auto;
 }
 
 .incoming-order-container
@@ -419,8 +438,29 @@ tr td:first-child
 
 .incoming-order-container:hover
 {
-    background: rgb(34, 73, 113);
+    background: #224971;
     border-radius: 10px;
+}
+
+.button
+{
+    position: relative;
+    margin: auto;
+    width: 90%;
+    display: none;
+    justify-content: flex-end;
+}
+
+.button button
+{
+    background: #FFA500;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
 }
 
 .outgoing-order-container
@@ -456,25 +496,4 @@ tr td:first-child
     font-size: 12px;
     color: #999999;
     padding-left: 10px;
-}
-
-.button
-{
-    position: relative;
-    margin: auto;
-    width: 90%;
-    display: none;
-    justify-content: flex-end;
-}
-
-.button button
-{
-    background: #FFA500;
-    color: #fff;
-    font-weight: 700;
-    padding: 10px 15px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    margin: 5px;
 }
