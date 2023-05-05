@@ -16,4 +16,10 @@ class Dashboard extends CI_Controller
     {
         $this->load->view("profile_view.php");
     }
+    public function test_proc()
+    {
+        $this->load->model('LoginModel');
+        $this->LoginModel->call_proc();
+        redirect('profile');
+    }
 }
