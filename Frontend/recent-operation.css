@@ -33,6 +33,22 @@ body
     z-index: -1;
 }
 
+.back-btn
+{
+    position: absolute;
+    text-decoration: none;
+    color: #EAF2FF;
+    top: 3%;
+    right: 2%;
+
+}
+
+.back-btn:hover
+{
+    text-decoration: underline;
+}
+
+
 .welcome
 {
     position: relative;
