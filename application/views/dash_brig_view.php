@@ -80,10 +80,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <button>Done</button>
         </div>
       </div>
+      <div class="orders-heading">
+        <h2>Outgoing <span>Orders</span></h2>
+      </div>
       <div class="outgoing-orders">
-        <div class="orders-heading">
-          <h2>Outgoing <span>Orders</span></h2>
-        </div>
         <div class="orders">
           <a href="#" class="outgoing-order-container">
           <img src="<?php echo ASSETS.'/images/bell.png';?>" alt="bell-img">
