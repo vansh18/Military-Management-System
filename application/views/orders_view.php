@@ -50,7 +50,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
                         </div>
                     </div>
                     <div class="fields" id="predefined-order-type">
-						<div class="text-field">
+                        <div class="text-field" id="order-type-container">
 							<label for="allocate retire" class="input-heading">Select Order</label>
 							<select id="order-type" name="quantity" class="quantity-list" onchange="check()" required>
 								<option value="1">Promote</option>
@@ -59,6 +59,16 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 								<option value="4">Create <?php echo $subgroup;?></option>
 								<option value="5">Remove <?php echo $subgroup;?></option>
 							  </select>
+						</div>
+                        <div class="text-field" id="subordinate-container">
+							<label for="name" class="input-heading">Select Subordinate</label>
+							<select id="subordinate" name="quantity" class="quantity-list" required>
+                                <option value="1">Subordinate 1</option>
+                                <option value="2">Subordinate 2</option>
+                                <option value="3">Subordinate 3</option>
+                                <option value="4">Subordinate 4</option>
+                                <option value="5">Subordinate 5</option>
+                              </select>
 						</div>
 					</div>
                     <div class="custom-order-container" id="custom-order-container">
@@ -122,12 +132,13 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
     {
 		document.getElementById("custom-order-container").style.display = "flex";
 		document.getElementById("soldier-info").style.display = "none";
-		document.getElementById("predefined-order-type").style.display = "none";
+		document.getElementById("order-type-container").style.display = "none";
 		document.getElementById("subgroup-action").style.display = "none";
 	});
-
+    
     predefined.addEventListener("change", function() 
     {
+        document.getElementById("order-type-container").style.display = "flex";
 		document.getElementById("custom-order-container").style.display = "none";
         document.getElementById("soldier-info").style.display = "flex";
 		document.getElementById("predefined-order-type").style.display = "flex";

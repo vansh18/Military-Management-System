@@ -22,7 +22,7 @@ class Orders extends CI_Controller
             $rank = $_SESSION ['user_info'] ['Rank_id'];
             $userid = $_SESSION ['user_info'] ['User_id'];
             $post = $_SESSION ['user_info'] ['post'];
-            $subordinates = $this->OrdersModel->get_subordinates ( $rank, $userid, $post );
+            $subordinates = $this->OrdersModel->get_idle_subordinates ( $rank, $userid, $post );
             $this->load->view ( 'orders_view.php', array (
                 'subordinates' => $subordinates,
                 'rank' => $rank

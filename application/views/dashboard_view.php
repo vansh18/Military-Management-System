@@ -1,5 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+$subgroup = "";
+if($_SESSION['user_info']['Rank_id'] == 1)
+    $subgroup =  'Batallion';
+else if ($_SESSION['user_info']['Rank_id'] == 2 || $_SESSION['user_info']['Rank_id'] == 3)
+    $subgroup =  'Company';
+else if ($_SESSION['user_info']['Rank_id'] == 4)
+    $subgroup =  'Platoon';
+else if ($_SESSION['user_info']['Rank_id'] == 5)
+    $subgroup =  'Squad';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,40 +126,87 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="div8 child"> 
       <div class="top">
         <h2 class="recent-operation-heading">
-          My Battalion
+          My <?php echo $subgroup;?>
         </h2>
       </div>
       <div class="table-container">
         <table class="my-battalion">
           <thead>
             <tr>
-              <th>Camps</th>
-              <th>Headquarters</th>
-              <th>Total Soldiers</th>
+            <?php if ($_SESSION['user_info']['Rank_id'] == 5)
+            {
+              ?>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Squad Members</th>
+            <?php
+            }
+            else
+            {
+              ?>
+              <th>Name</th>
+              <th>Commander</th>
+              <th>Commander ID</th>
+              <?php
+            }
+            ?>
             </tr>
           </thead>
+          <?php if ($_SESSION['user_info']['Rank_id'] == 5)
+          {
+            ?>
           <tbody>
-            <tr>
-              <td>North Campus</td>
-              <td>Russia</td>
-              <td>1353</td>
-            </tr>
-            <tr>
-              <td>West Campus</td>
-              <td>California</td>
-              <td>1531</td>
-            </tr>
-            <tr>
-              <td>East Campus</td>
-              <td>Delhi</td>
-              <td>2735</td>
-            </tr>
-            <tr>
-              <td>East Campus</td>
-              <td>Delhi</td>
-              <td>2735</td>
-            </tr>
+            <?php 
+              $squads = array('Anti_Tank','Medical','Sniper','Assault','Signals','Infantry');
+              $i=0;
+              foreach($sub_list as $subs)
+              {
+            ?>
+              <tr>
+                <td><?php echo $subs['id'][0];?></td>
+                <td>Sepoy <?php echo $subs['names'][0];?></td>
+                <td><?php echo $squads[$i];?></td>
+              </tr>
+              <tr>
+                <td><?php echo $subs['id'][1];?></td>
+                <td><?php echo $subs['names'][1];?></td>
+                <td><?php echo $squads[$i];?></td>
+              </tr>
+            <?php
+                $i++;
+              }
+              ?>
           </tbody>
+          <?php
+          }
+          else
+          {
+            ?>
+            <tbody>
+            <?php 
+              foreach($sub_list as $subs)
+              {
+                ?>
+                <tr>
+                  <?php
+                  if($subs === NULL)
+                    break;
+                foreach($subs as $sub)
+                {
+            ?>
+                <td><?php echo $sub;?></td>
+                
+                <?php
+              }
+              ?>
+              </tr>
+              <?php
+            }
+              ?>
+          </tbody>
+
+          <?php 
+        } ?>
         </table>
       </div>
     </div>

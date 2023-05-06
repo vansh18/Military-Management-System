@@ -11,8 +11,10 @@ class Dashboard extends CI_Controller
     }
     public function index()
     {
-        $bat = $this->OperationModel->get_batallions();
-        $this->load->view("dashboard_view.php",array('battalion_list' => $bat));
+        // $bat = $this->OperationModel->get_batallions();
+        $this->load->model('DashboardModel');
+        $res = $this->DashboardModel->get_subgroup($_SESSION['userid'],$_SESSION['user_info']['Rank_id'],$_SESSION['user_info']['post']);
+        $this->load->view("dashboard_view.php",array('sub_list' => $res));
     }
     public function profile()
     {
@@ -20,9 +22,7 @@ class Dashboard extends CI_Controller
     }
     public function test_proc()
     {
-        $this->load->model('LoginModel');
-        $this->LoginModel->call_proc();
-        redirect('profile');
+        
     }
     public function create_operation()
     {

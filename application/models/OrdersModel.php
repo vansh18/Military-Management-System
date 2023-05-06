@@ -3,7 +3,7 @@ defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' );
 class OrdersModel extends CI_Model 
 {
 
-    public function get_subordinates($rank, $userid, $post)
+    public function get_idle_subordinates($rank, $userid, $post)
     {
         // get all subordinates of the user who are in the same post as the user";
         if($rank == 1)// if user is Brigadier, get id and names of all idle Colonels from Users table, Colonels have Rank_id as 2
@@ -229,7 +229,7 @@ class OrdersModel extends CI_Model
                 $result = $query->result_array();
                 $members = array($result[0]['User_id'],$result[1]['User_id']);
                 $sql = "INSERT INTO $squad (squad_mem1,squad_mem2) VALUES (?,?)";
-                $query = $this->db->query($sql,$members);
+                $query = $this->db->query($sql,array($result[0]['User_id'],$result[1]['User_id']));
                 if ($this->db->trans_status() === FALSE)
                 {
                         $this->db->trans_rollback();
@@ -237,36 +237,30 @@ class OrdersModel extends CI_Model
                 }
                 else
                     $this->db->trans_commit();
-                {
-                    $field = $squad.'_id';
-              
-                    $sql = "UPDATE Platoon SET $field = (SELECT squad_id FROM $squad ORDER BY squad_id DESC LIMIT 1) 
-                    WHERE NCO = ? AND $field IS NULL";
-                    $query = $this->db->query($sql,$userid);
-                    // if field is not null, then continue to next field
-                    if ($this->db->trans_status() === FALSE)
-                    {
-                        $this->db->trans_rollback();
-                        return false;
-                    }
-                    else
-                        $this->db->trans_commit();
-
-                    if($this->db->affected_rows() == 0)
-                    {   
-                        continue;
-                    }
-                    else
-                    {
-                        // set squad member status to Deployed from Users table
-                        $sql = "UPDATE Users SET Cur_status = 'Deployed' WHERE User_id in (?,?)";
-                        $query = $this->db->query($sql,$members);
-                        // when all queries are successful, commit them, then return true
-                        $this->db->trans_commit();
-                        $this->db->trans_complete();
-                        $complete = 1;
-                    }
+                $field = $squad.'_id';
+                $sql = "UPDATE Platoon SET $field = (SELECT squad_id FROM $squad ORDER BY squad_id DESC LIMIT 1) 
+                WHERE NCO = ? AND $field IS NULL";
+                $query = $this->db->query($sql,$userid);
+                // if field is not null, then continue to next field
+                if($this->db->affected_rows() == 0)
+                {   
+                    continue;
                 }
+                if ($this->db->trans_status() === FALSE)
+                {
+                    $this->db->trans_rollback();
+                    return false;
+                }
+                else
+                    $this->db->trans_commit();
+                // set squad member status to Deployed from Users table
+                $sql = "UPDATE Users SET Cur_status = 'Deployed' WHERE User_id in (?,?)";
+                $query = $this->db->query($sql,array($result[0]['User_id'],$result[1]['User_id']));
+                // when all queries are successful, commit them, then return true
+                $this->db->trans_commit();
+                $this->db->trans_complete();
+                $complete = 1;
+
             }
             if($complete == 1)
             {
@@ -279,6 +273,11 @@ class OrdersModel extends CI_Model
                 return false;
             }
         }
+    }
+
+    public function remove_subgrp($data)
+    {
+
     }
 }
 
