@@ -253,3 +253,15 @@ textarea
     display: none;
     justify-content: space-between;
 }
+
+#subordinate-container
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#order-type-container
+{
+    display: flex;
+    flex-direction: column;
+}
