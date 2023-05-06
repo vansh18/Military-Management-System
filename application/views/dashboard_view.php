@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <a href="<?php echo BASE_URL.'create-operation';?>" class="home">
             <img src="<?php echo ASSETS.'/images/home.png';?>" alt="home-img" class="home-img">
           </a>
-          <a href="give-order.html" class="give-order">
+          <a href="<?php echo BASE_URL.'give-order';?>" class="give-order">
             <img src="<?php echo ASSETS.'/images/phone.png';?>" alt="phone-img">
           </a>
           <a href="<?php echo BASE_URL.'create-operation';?>" class="folder">
@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </a>
     </div>
     <div class="div4 child"> 
-      <a href="give-orders.html" class="content">
+      <a href="<?php echo BASE_URL.'give-order';?>" class="content">
         <img src="<?php echo ASSETS.'/images/phone.png';?>" alt="order-img">
         Give Orders
       </a>

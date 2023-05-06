@@ -57,3 +57,5 @@ $route['logout'] = 'login/user_logout';
 $route['profile'] = 'dashboard/profile';
 $route['create-operation'] = 'dashboard/create_operation';
 $route['add-operation'] = 'dashboard/add_operation';
+$route['give-order'] = 'orders';
+$route['add-subgrp'] = 'orders/add_subgrp';
