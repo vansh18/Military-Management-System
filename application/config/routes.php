@@ -59,4 +59,5 @@ $route['create-operation'] = 'dashboard/create_operation';
 $route['add-operation'] = 'dashboard/add_operation';
 $route['give-order'] = 'orders';
 $route['add-subgrp'] = 'orders/add_subgrp';
+$route['custom-order'] = 'orders/custom_order';
 $route['recent-operations'] = 'dashboard/recent_operations';

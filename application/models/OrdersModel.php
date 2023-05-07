@@ -279,6 +279,20 @@ class OrdersModel extends CI_Model
     {
 
     }
+    public function custom_order($data)
+    {
+        $from = $data['fromUserId'];
+        $to = $data['toUserId'];
+        $order = $data['order'];
+        //insert into orders table
+        $sql = "INSERT INTO Orders (Order_name,Order_description,from_id,to_id) VALUES ('custom',?,?,?)";
+        $query = $this->db->query($sql,array($order,$from,$to));
+        if($this->db->affected_rows() == 0)
+            return false;
+        else
+            return true;    
+    }
+
 }
 
 ?>

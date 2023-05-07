@@ -19,13 +19,16 @@ class Orders extends CI_Controller
         else 
         {
             $this->load->model ( 'OrdersModel' );
+            $this->load->model ( 'DashboardModel' );
             $rank = $_SESSION ['user_info'] ['Rank_id'];
             $userid = $_SESSION ['user_info'] ['User_id'];
             $post = $_SESSION ['user_info'] ['post'];
             $subordinates = $this->OrdersModel->get_idle_subordinates ( $rank, $userid, $post );
+            $subs = $this->DashboardModel->get_subgroup ( $userid, $rank );
             $this->load->view ( 'orders_view.php', array (
                 'subordinates' => $subordinates,
-                'rank' => $rank
+                'rank' => $rank,
+                'subs' => $subs
             ) );
         }
     }
@@ -66,5 +69,26 @@ class Orders extends CI_Controller
                 'message'=> 'Subgroup removal failed'
             )));
         }
+
+    }
+    public function custom_order()
+    {
+        $data = $_POST;
+        $this->load->model('OrdersModel');
+        if($this->OrdersModel->custom_order($data))
+        {
+            echo(json_encode(array(
+                'status'=> 200,
+                'message'=> 'Order added successfully'
+            )));
+        }
+        else
+        {
+            echo(json_encode(array(
+                'status'=> 500,
+                'message'=> 'Order addition failed'
+            )));
+        }
+        
     }
 }

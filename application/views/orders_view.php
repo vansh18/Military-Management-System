@@ -33,6 +33,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             </div>
             <form>
                 <input type="hidden" name="Rank-id" id="Rank-id" value="<?php echo $rank;?>">
+                <input type="hidden" name="my-user-id" id="my-user-id" value="<?php echo $_SESSION['userid'];?>">
                 <div class="input-container">
                     <div class="order-type">
                         <label for="equipment" class="input-heading">Select Order Type</label>
@@ -63,11 +64,12 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
                         <div class="text-field" id="subordinate-container">
 							<label for="name" class="input-heading">Select Subordinate</label>
 							<select id="subordinate" name="quantity" class="quantity-list" required>
-                                <option value="1">Subordinate 1</option>
-                                <option value="2">Subordinate 2</option>
-                                <option value="3">Subordinate 3</option>
-                                <option value="4">Subordinate 4</option>
-                                <option value="5">Subordinate 5</option>
+                                <?php 
+                                    foreach($subs as $sub)
+                                    {
+                                        echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
+                                    }
+                                ?>
                               </select>
 						</div>
 					</div>

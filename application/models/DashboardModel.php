@@ -24,7 +24,7 @@ class DashboardModel extends CI_Model {
         else
             return false;
     }
-    public function get_subgroup($userid,$rank,$post)
+    public function get_subgroup($userid,$rank)
     {
         // function to get the subgroup of the user
         $sub = array();
