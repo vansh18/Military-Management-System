@@ -29,7 +29,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
           <a href="<?php echo BASE_URL.'profile';?>" class="profile">
             <img src="<?php echo ASSETS.'/images/profile.jpg';?>" alt="profile-img" class="profile-img">
           </a>
-          <a href="<?php echo BASE_URL.'create-operation';?>" class="home">
+          <a href="<?php echo BASE_URL.'dashboard';?>" class="home">
             <img src="<?php echo ASSETS.'/images/home.png';?>" alt="home-img" class="home-img">
           </a>
           <a href="<?php echo BASE_URL.'give-order';?>" class="give-order">
@@ -215,7 +215,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
         <h2 class="recent-operation-heading">
           Recent Operation
         </h2>
-        <a href="recent-operation.html">Manage Operations</a>
+        <a href="<?php echo BASE_URL."recent-operations";?>">Manage Operations</a>
       </div>
       <div class="table-container">
         <table class="recent-operation">
@@ -228,30 +228,26 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             </tr>
           </thead>
           <tbody>
-            <tr role="link">
-              <td><img src="<?php echo ASSETS.'/images/green.png';?>" alt="green-light" class="lights"> Successful</td>
-              <td>Operation Jeet</td>
-              <td>Carried out in J&amp;K ...</td>
-              <td>March 20<sup>th</sup></td>
-            </tr>
-            <tr>
-              <td><img src="<?php echo ASSETS.'/images/red.png';?>" alt="red-light" class="lights"> Failed</td>
-              <td>Operation D.M.E</td>
-              <td>Encountered an error during execution</td>
-              <td>March 3<sup>rd</sup></td>
-            </tr>
-            <tr>
-              <td><img src="<?php echo ASSETS.'/images/grey.png';?>" alt="grey-light" class="lights"> Ongoing</td>
-              <td>Operation D.C.E</td>
-              <td>In Process</td>
-              <td>March 18<sup>th</sup></td>
-            </tr>
-            <tr>
-              <td><img src="<?php echo ASSETS.'/images/green.png';?>" alt="grey-light" class="lights"> Ongoing</td>
-              <td>Operation D.C.E</td>
-              <td>In Process</td>
-              <td>March 18<sup>th</sup></td>
-            </tr>
+            <?php
+                  foreach($ops as $op)
+                  {
+                    if($op['op_status'] == 1)
+                     { $img = 'grey.png'; $status = 'Ongoing';}
+                    else if ($op['op_status'] == 2)
+                      { $img = 'green.png'; $status = 'Successful';}
+                    else
+                      { $img = 'red.png'; $status = 'Failed';}
+                    ?>
+                    <tr>
+                      <td><img src="<?php echo ASSETS.'/images/'.$img;?>" alt="grey-light" class="lights"> <?php echo $status;?></td>
+                      <td><?php echo $op['Op_name'];?></td>
+                      <td><?php echo $op['Descriptions'];?></td>
+                      <td><?php echo $op['start_date'];?></td>
+                    </tr>
+                    <?php
+                  }
+                
+              ?>
           </tbody>
         </table>
       </div>

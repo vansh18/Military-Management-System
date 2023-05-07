@@ -36,11 +36,8 @@ function create_op(url) {
         },
         success: function(response) {
             if(response.status == 200) {
-            alert("Operation created successfully");
-            // redirtect to the dashboard after 1 seconds    
-            setTimeout(function() {
+                alert("Operation created successfully");
                 window.location.replace(url+"dashboard");
-                },1000);
             }
             else { 
                 console.log("Operation creation failed");
