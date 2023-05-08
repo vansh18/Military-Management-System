@@ -61,3 +61,4 @@ $route['give-order'] = 'orders';
 $route['add-subgrp'] = 'orders/add_subgrp';
 $route['custom-order'] = 'orders/custom_order';
 $route['recent-operations'] = 'dashboard/recent_operations';
+$route['send-orders-status'] = 'orders/send_orders_status';

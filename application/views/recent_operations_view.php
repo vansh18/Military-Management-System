@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </style>
 	<body>
         <img src="<?php echo ASSETS.'/images/watermark.png';?>" alt="" class="watermark">
-        <a href="dashboard.html" class="back-btn">Back</a>
+        <a href="<?php echo BASE_URL.'dashboard';?>" class="back-btn">Back</a>
 		<h3 class="welcome">My <span>Profile</span></h3>
 		<div class="parent">
 			<div class="div1 child">

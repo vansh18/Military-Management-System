@@ -17,6 +17,8 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?php echo ASSETS.'css/dashboard.css';?>">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="<?php echo ASSETS.'js/orders_view.js';?>"></script>
   <title>Dashboard</title>
 </head>
 <body>
@@ -70,23 +72,26 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
           <h2>Incoming <span>Orders</span></h2>
         </div>
         <div class="orders">
-          <a href="#" class="incoming-order-container">
-            <img src="<?php echo ASSETS.'/images/bell.png';?>" alt="bell-img">
-            <div class="order-text">
-              <p class="order">Prepare for War</p>
-              <p class="order-date">April 20<sup>th</sup></p>
-            </div>
-          </a>
-          <a href="#" class="incoming-order-container">
-            <img src="<?php echo ASSETS.'/images/bell.png';?>" alt="bell-img">
-            <div class="order-text">
-              <p class="order">Prepare for War</p>
-              <p class="order-date">April 20<sup>th</sup></p>
-            </div>
-          </a>
+          <?php
+              foreach($in_orders as $order)
+              {
+                if($order['Order_status'] == 1)
+                {
+          ?>
+            <a href="#" class="incoming-order-container" id="<?php echo $order['Order_id'];?>" status="unchecked">
+              <img src="<?php echo ASSETS.'/images/bell.png';?>" alt="bell-img">
+              <div class="order-text">
+                <p class="order"><?php echo $order['Order_description'];?></p>
+                <p class="order-date"><?php $date = new DateTime($order['Start_date']); echo $date->format('j M, Y');?></p>
+              </div>
+            </a>
+            <?php
+                }
+              }
+            ?>
         </div>
         <div class="button" id="button">
-          <button>Done</button>
+          <button onclick="send_orders('<?php echo BASE_URL;?>');">Done</button>
         </div>
       </div>
       <div class="outgoing-orders">
@@ -94,20 +99,23 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
           <h2>Outgoing <span>Orders</span></h2>
         </div>
         <div class="orders">
+        <?php
+              foreach($out_orders as $order)
+              {
+                if($order['Order_status'] == 1)
+                {
+          ?>
           <a href="#" class="outgoing-order-container">
           <img src="<?php echo ASSETS.'/images/bell.png';?>" alt="bell-img">
             <div class="order-text">
-              <p class="order">Prepare for War</p>
-              <p class="order-date">April 20<sup>th</sup></p>
+              <p class="order"><?php echo $order['Order_description'];?></p>
+              <p class="order-date"><?php $date = new DateTime($order['Start_date']); echo $date->format('j M, Y');?></p>
             </div>
           </a>
-          <a href="#" class="outgoing-order-container">
-          <img src="<?php echo ASSETS.'/images/bell.png';?>" alt="bell-img">
-            <div class="order-text">
-              <p class="order">Prepare for War</p>
-              <p class="order-date">April 20<sup>th</sup></p>
-            </div>
-          </a>
+          <?php
+              }
+            }
+            ?>
         </div>
       </div>
     </div>
@@ -260,16 +268,23 @@ const order_button = document.getElementById("button");
 
 orders.forEach((order) => {
   order.addEventListener("click", () => {
+    // change status attribute of orders to checked if it is unchecked and vice versa
+    var attr = order.getAttribute("status");
+    if (attr === "unchecked") {
+      order.setAttribute("status", "checked");
+    } else {
+      order.setAttribute("status", "unchecked");
+    }
     const image = order.querySelector("img");
-    if (image.getAttribute("src") === "/images/bell.png") {
+    if (image.getAttribute("src") === "<?php echo ASSETS.'/images/bell.png';?>") {
       order_button.style.display = "none";
-      image.setAttribute("src", "/images/thumb.png");
+      image.setAttribute("src", "<?php echo ASSETS.'/images/thumb.png';?>");
       order.style.background = "rgb(34, 73, 113)";
     } else {
-      image.setAttribute("src", "/images/bell.png");
+      image.setAttribute("src", "<?php echo ASSETS.'/images/bell.png';?>");
       order.style.background = "";
     }
-    if (document.querySelector(".incoming-order-container img[src='/images/thumb.png']")) {
+    if (document.querySelector(".incoming-order-container img[src='<?php echo ASSETS.'/images/thumb.png';?>']")) {
       order_button.style.display = "flex";
     } else {
       order_button.style.display = "none";

@@ -293,6 +293,40 @@ class OrdersModel extends CI_Model
             return true;    
     }
 
+    public function get_in_orders($userid)
+    {
+        //function to get incoming orders from orders table
+        $sql = "SELECT * FROM Orders WHERE to_id = ?";
+        $query = $this->db->query($sql,$userid);
+        if($query->num_rows() == 0)
+            return array();
+        else
+            return $query->result_array();
+    }
+    public function get_out_orders($userid)
+    {
+        //function to get outgoing orders from orders table
+        $sql = "SELECT * FROM Orders WHERE from_id = ?";
+        $query = $this->db->query($sql,$userid);
+        if($query->num_rows() == 0)
+            return array();
+        else
+            return $query->result_array();
+    }
+    public function change_orders_status($data)
+    {
+        //function to change status of orders from 1 to 0
+        $sql = "UPDATE Orders SET Order_status = 0 WHERE Order_id in (?)";
+        $query = $this->db->query($sql,$data);
+        if($query)
+            return true;
+        else
+        {
+            echo ($this->db->last_query()); die;
+        }
+
+    }
+
 }
 
 ?>

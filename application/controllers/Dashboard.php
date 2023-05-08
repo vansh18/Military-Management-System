@@ -8,14 +8,21 @@ class Dashboard extends CI_Controller
         parent::__construct(); 
         user_login();
         $this->load->model('OperationModel');
+        $this->load->model('OrdersModel');
     }
     public function index()
     {
         // $bat = $this->OperationModel->get_batallions();
         $this->load->model('DashboardModel');
         $res = $this->DashboardModel->get_subgroup($_SESSION['userid'],$_SESSION['user_info']['Rank_id'],$_SESSION['user_info']['post']);
-        $ops = $this->OperationModel->get_operations($_SESSION['userid']);
-        $this->load->view("dashboard_view.php",array('sub_list' => $res,'ops' => $ops));
+        $ops = array();
+        $in_orders = $this->OrdersModel->get_in_orders($_SESSION['userid']);
+        $out_orders = $this->OrdersModel->get_out_orders($_SESSION['userid']);
+        if($_SESSION['user_info']['Rank_id'] == 1)
+            $ops = $this->OperationModel->get_operations_brig($_SESSION['userid']);
+        else if ($_SESSION['user_info']['Rank_id'] == 2)
+            $ops = $this->OperationModel->get_operations_bat($_SESSION['userid']);
+        $this->load->view("dashboard_view.php",array('sub_list' => $res,'ops' => $ops,'in_orders' => $in_orders,'out_orders' => $out_orders));
     }
     public function profile()
     {
@@ -64,7 +71,11 @@ class Dashboard extends CI_Controller
 
     public function recent_operations()
     {
-        $ops = $this->OperationModel->get_operations($_SESSION['userid']);
+        $ops = array();
+        if($_SESSION['user_info']['Rank_id'] == 1)
+            $ops = $this->OperationModel->get_operations_brig($_SESSION['userid']);
+        else if ($_SESSION['user_info']['Rank_id'] == 2)
+            $ops = $this->OperationModel->get_operations_bat($_SESSION['userid']);
         $this->load->view('recent_operations_view.php',array('ops' => $ops));
     }
 }

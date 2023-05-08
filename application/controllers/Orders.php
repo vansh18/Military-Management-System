@@ -6,6 +6,7 @@ class Orders extends CI_Controller
     {
         parent::__construct ();
         user_login ();
+        $this->load->model ( 'OrdersModel' );
     }
 
     public function index() 
@@ -18,7 +19,7 @@ class Orders extends CI_Controller
         } 
         else 
         {
-            $this->load->model ( 'OrdersModel' );
+            
             $this->load->model ( 'DashboardModel' );
             $rank = $_SESSION ['user_info'] ['Rank_id'];
             $userid = $_SESSION ['user_info'] ['User_id'];
@@ -35,7 +36,6 @@ class Orders extends CI_Controller
     public function add_subgrp()
     {
         $data = $_POST;
-        $this->load->model('OrdersModel');
         if($this->OrdersModel->add_subgrp($data))
         {
             echo(json_encode(array(
@@ -54,7 +54,6 @@ class Orders extends CI_Controller
     public function remove_subgrp()
     {
         $data = $_POST;
-        $this->load->model('OrdersModel');
         if($this->OrdersModel->remove_subgrp($data))
         {
             echo(json_encode(array(
@@ -74,7 +73,6 @@ class Orders extends CI_Controller
     public function custom_order()
     {
         $data = $_POST;
-        $this->load->model('OrdersModel');
         if($this->OrdersModel->custom_order($data))
         {
             echo(json_encode(array(
@@ -89,6 +87,24 @@ class Orders extends CI_Controller
                 'message'=> 'Order addition failed'
             )));
         }
-        
+    }
+    public function send_orders_status()
+    {
+        //Change the status of order ids received to 0
+        $data = $_POST;
+        if($this->OrdersModel->change_orders_status($data))
+        {
+            echo(json_encode(array(
+                'status'=> 200,
+                'message'=> 'Order status changed successfully'
+            )));
+        }
+        else
+        {
+            echo(json_encode(array(
+                'status'=> 500,
+                'message'=> 'Order status change failed'
+            )));
+        }
     }
 }
