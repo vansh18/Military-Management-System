@@ -3,7 +3,7 @@ function login(url) {
     event.preventDefault(); // Prevent the form from submitting normally
     var loginurl = url+"validate-user";
     var userid = $(".user-id").val();
-    var password = $(".password").val();
+    var password = $("#password").val();
     var hashedPassword = CryptoJS.SHA256(password).toString();
     $.ajax({
         url: loginurl,

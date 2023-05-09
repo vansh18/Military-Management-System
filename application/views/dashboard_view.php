@@ -67,10 +67,11 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
       </a>
     </div>
     <div class="div5 child"> 
-      <div class="incoming-orders">
+      <div class="order-container">
         <div class="orders-heading">
           <h2>Incoming <span>Orders</span></h2>
         </div>
+        <div class="incoming-orders">
         <div class="orders">
           <?php
               foreach($in_orders as $order)
@@ -90,14 +91,16 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
               }
             ?>
         </div>
+        </div>
         <div class="button" id="button">
           <button onclick="send_orders('<?php echo BASE_URL;?>');">Done</button>
         </div>
       </div>
-      <div class="outgoing-orders">
+      <div class="order-container">
         <div class="orders-heading">
           <h2>Outgoing <span>Orders</span></h2>
-        </div>
+            </div>
+        <div class="outgoing-orders">
         <div class="orders">
         <?php
               foreach($out_orders as $order)
@@ -118,6 +121,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             ?>
         </div>
       </div>
+    </div>
     </div>
     <div class="div6 child"> 
       <div class="counter">
