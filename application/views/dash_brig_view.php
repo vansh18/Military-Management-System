@@ -125,8 +125,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <thead>
             <tr>
               <th>ID</th>
-              <th>Headquarters</th>
-              <th>Total Soldiers</th>
+              <th>Name</th>
+              <th>Commanding Officer</th>
             </tr>
           </thead>
           <tbody>

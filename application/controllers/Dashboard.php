@@ -8,11 +8,21 @@ class Dashboard extends CI_Controller
         parent::__construct(); 
         user_login();
         $this->load->model('OperationModel');
+        $this->load->model('OrdersModel');
     }
     public function index()
     {
-        $bat = $this->OperationModel->get_batallions();
-        $this->load->view("dashboard_view.php",array('battalion_list' => $bat));
+        // $bat = $this->OperationModel->get_batallions();
+        $this->load->model('DashboardModel');
+        $res = $this->DashboardModel->get_subgroup($_SESSION['userid'],$_SESSION['user_info']['Rank_id'],$_SESSION['user_info']['post']);
+        $ops = array();
+        $in_orders = $this->OrdersModel->get_in_orders($_SESSION['userid']);
+        $out_orders = $this->OrdersModel->get_out_orders($_SESSION['userid']);
+        if($_SESSION['user_info']['Rank_id'] == 1)
+            $ops = $this->OperationModel->get_operations_brig($_SESSION['userid']);
+        else if ($_SESSION['user_info']['Rank_id'] == 2)
+            $ops = $this->OperationModel->get_operations_bat($_SESSION['userid']);
+        $this->load->view("dashboard_view.php",array('sub_list' => $res,'ops' => $ops,'in_orders' => $in_orders,'out_orders' => $out_orders));
     }
     public function profile()
     {
@@ -20,9 +30,7 @@ class Dashboard extends CI_Controller
     }
     public function test_proc()
     {
-        $this->load->model('LoginModel');
-        $this->LoginModel->call_proc();
-        redirect('profile');
+        
     }
     public function create_operation()
     {
@@ -43,6 +51,8 @@ class Dashboard extends CI_Controller
     {
         //function to receive data from create_operation_view.php and add it to database
         $data = $_POST;
+        if($_SESSION['user_info']['Rank_id'] != 1)
+            return false;
         if($this->OperationModel->add_operation($data))
         {
             echo(json_encode(array(
@@ -57,5 +67,15 @@ class Dashboard extends CI_Controller
                 'message'=> 'Battalion is already part of an operation'
             )));
         }
+    }
+
+    public function recent_operations()
+    {
+        $ops = array();
+        if($_SESSION['user_info']['Rank_id'] == 1)
+            $ops = $this->OperationModel->get_operations_brig($_SESSION['userid']);
+        else if ($_SESSION['user_info']['Rank_id'] == 2)
+            $ops = $this->OperationModel->get_operations_bat($_SESSION['userid']);
+        $this->load->view('recent_operations_view.php',array('ops' => $ops));
     }
 }
