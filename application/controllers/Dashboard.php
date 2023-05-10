@@ -30,7 +30,9 @@ class Dashboard extends CI_Controller
     }
     public function test_proc()
     {
-        
+        $this->load->model('DashboardModel');
+        $res = $this->DashboardModel->get_subgroup(18,5,$_SESSION['user_info']['post']);
+        print_r($res);
     }
     public function create_operation()
     {

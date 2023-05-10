@@ -34,7 +34,7 @@ class DashboardModel extends CI_Model {
             $squads = array('Anti_Tank','Medical','Sniper','Assault','Signals','Infantry');
             foreach ( $squads as $squad ) {
                 $field = $squad.'_id';
-                $sql = "SELECT squad_mem1,squad_mem2 FROM $squad WHERE squad_id = (SELECT $field FROM Platoon 
+                $sql = "SELECT squad_id,squad_mem1,squad_mem2 FROM $squad WHERE squad_id = (SELECT $field FROM Platoon 
                 WHERE NCO = ?)";
                 $query = $this->db->query ( $sql, array($userid) );
                 $result = $query->row_array ();
@@ -45,7 +45,9 @@ class DashboardModel extends CI_Model {
                     $sql = "SELECT User_name FROM Users WHERE User_id in(?,?)";
                     $query = $this->db->query ( $sql, array($result['squad_mem1'],$result['squad_mem2']) );
                     $result2 = $query->result_array ();
-                    $sub[$field]['names'] = array($result2[0]['User_name'],$result2[1]['User_name']);                }
+                    $sub[$field]['names'] = array($result2[0]['User_name'],$result2[1]['User_name']);
+                    $sub[$field]['squad_id'] = $result['squad_id'];
+                }
             }
         }
         else
@@ -88,7 +90,7 @@ class DashboardModel extends CI_Model {
                 if(isset($subgrp[$key]))
                 {
                     // select subgroup leader name and id from users table and subgroup name from subgroup table
-                    $sql = "SELECT $subgroup"."_name,concat('$sub_rank',Users.User_name) as User_name,Users.User_id FROM Users
+                    $sql = "SELECT $subgroup"."_id,$subgroup"."_name,concat('$sub_rank',Users.User_name) as User_name,Users.User_id FROM Users
                      INNER JOIN $subgroup ON Users.User_id = $subgroup.$sub_leader 
                      WHERE $subgroup"."_id = ?";
                     $query = $this->db->query ( $sql, $value);

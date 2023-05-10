@@ -40,7 +40,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
           <a href="<?php echo BASE_URL.'create-operation';?>" class="folder">
             <img src="<?php echo ASSETS.'/images/folder.png';?>" alt="folder-img">
           </a>
-          <a href="armory.html" class="armory">
+          <a href="<?php echo BASE_URL.'equipment';?>" class="armory">
             <img src="<?php echo ASSETS.'/images/armory.png';?>" alt="gun-img">
           </a>
           <a href="<?php echo BASE_URL.'logout';?>" class="logout">
@@ -55,7 +55,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
       </a>
     </div>
     <div class="div3 child">
-      <a href="manage-equipment.html" class="content">
+      <a href="<?php echo BASE_URL.'equipment';?>" class="content">
       <img src="<?php echo ASSETS.'/images/armory.png';?>" alt="gun-img">
         Manage Equipments
       </a>
