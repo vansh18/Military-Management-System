@@ -171,6 +171,8 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             <?php 
               $squads = array('Anti_Tank','Medical','Sniper','Assault','Signals','Infantry');
               $i=0;
+              if(isset($sub_list))
+              {
               foreach($sub_list as $subs)
               {
             ?>
@@ -187,6 +189,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             <?php
                 $i++;
               }
+            }
               ?>
           </tbody>
           <?php
@@ -196,6 +199,8 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             ?>
             <tbody>
             <?php 
+            if(isset($sub_list))
+            {
               foreach($sub_list as $subs)
               {
                 ?>
@@ -214,6 +219,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
               </tr>
               <?php
             }
+          }
               ?>
           </tbody>
 

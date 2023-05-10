@@ -224,8 +224,8 @@ class OrdersModel extends CI_Model
             foreach($squads as $squad)
             {
                 $this->db->trans_begin();
-                $sql = "SELECT User_id FROM Users WHERE Rank_id = 6 AND Cur_Status = 'Idle' LIMIT 2";
-                $query = $this->db->query($sql);
+                $sql = "SELECT User_id FROM Users WHERE Rank_id = 6 AND Cur_Status = 'Idle' AND post = ? LIMIT 2";
+                $query = $this->db->query($sql,$post);
                 $result = $query->result_array();
                 $members = array($result[0]['User_id'],$result[1]['User_id']);
                 $sql = "INSERT INTO $squad (squad_mem1,squad_mem2) VALUES (?,?)";

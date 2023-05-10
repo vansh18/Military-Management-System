@@ -7,6 +7,7 @@ class Orders extends CI_Controller
         parent::__construct ();
         user_login ();
         $this->load->model ( 'OrdersModel' );
+        $this->load->model ( 'DashboardModel' );
     }
 
     public function index() 
@@ -17,10 +18,13 @@ class Orders extends CI_Controller
             echo 'You are not authorized to access this page. You will be redirected to dashboard in 2 seconds.';
             header ( "refresh:2;url=" . base_url () . "dashboard" );
         } 
+        else if ($_SESSION['user_info']['Cur_Status'] == 'Idle')
+        {
+            echo 'Your status is Idle, you are not authorized to access this page. You will be redirected to dashboard in 2 seconds.';
+            header ( "refresh:2;url=" . base_url () . "dashboard" );
+        }
         else 
         {
-            
-            $this->load->model ( 'DashboardModel' );
             $rank = $_SESSION ['user_info'] ['Rank_id'];
             $userid = $_SESSION ['user_info'] ['User_id'];
             $post = $_SESSION ['user_info'] ['post'];
