@@ -70,18 +70,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<input type="text" id="name" name="name" autocomplete="off">
 						</div>
 						<div class="option-field">
-							<label for="quantity" class="input-heading">Select Quantity</label>
-							<select id="quantity" name="quantity" class="quantity-list">
-							  <option value="1">1</option>
-							  <option value="2">2</option>
-							  <option value="3">3</option>
-							  <option value="4">4</option>
-							  <option value="5">5</option>
-							  <option value="6">6</option>
-							  <option value="7">7</option>
-							  <option value="8">8</option>
-							</select>
-						  </div>
+							<label for="quantity" class="input-heading">Enter Quantity</label>
+							<input type="number" id="quantity" name="name" autocomplete="off" min="1">
+						</div>
 					</div> 
 					<div class="fields" id="assignee-box">
 						<div class="text-field">

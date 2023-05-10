@@ -126,7 +126,7 @@ form
     cursor: pointer;
 }
 
-input[type="text"],select
+input[type="text"],input[type="number"],select
 {
     background: none;
     outline: none;
