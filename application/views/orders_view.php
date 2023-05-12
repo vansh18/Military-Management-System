@@ -54,11 +54,11 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
                         <div class="text-field" id="order-type-container">
 							<label for="allocate retire" class="input-heading">Select Order</label>
 							<select id="order-type" name="quantity" class="quantity-list" onchange="check()" required>
+                                <option value="4" selected>Create <?php echo $subgroup;?></option>
 								<option value="1">Promote</option>
 								<option value="2">Demote</option>
 								<option value="3">Dismiss</option>
-								<option value="4">Create <?php echo $subgroup;?></option>
-								<option value="5">Remove <?php echo $subgroup;?></option>
+								<!-- <option value="5">Remove <?php //echo $subgroup;?></option> -->
 							  </select>
 						</div>
                         <div class="text-field" id="subordinate-container">
@@ -88,7 +88,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
                                 <option value="5">Rank 5</option>
                               </select>
 						</div>
-						<div class="option-field" id="option-field">
+						<!-- <div class="option-field" id="option-field">
 							<label for="quantity" class="input-heading">Select Soldier Name</label>
 							<select id="soldier-name" name="quantity" class="quantity-list" required>
 							  <option value="1">Sepoy Alan</option>
@@ -96,7 +96,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 							  <option value="3">Sepoy Hrishikesh</option>
 							  <option value="4">Sepoy Tanish</option>
 							</select>
-						  </div>
+						  </div> -->
                     </div>
                     <div class="subgroup-action" id="subgroup-action">
                         <div class="text-field">

@@ -156,8 +156,9 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             else
             {
               ?>
+              <th>ID</th>
               <th>Name</th>
-              <th>Commander</th>
+              <th>Commander Name</th>
               <th>Commander ID</th>
               <?php
             }

@@ -1,3 +1,4 @@
+// window.onload('check()')
 function passOrder(url)
 {
     var selectOption = $('#order-type').val();

@@ -275,10 +275,6 @@ class OrdersModel extends CI_Model
         }
     }
 
-    public function remove_subgrp($data)
-    {
-
-    }
     public function custom_order($data)
     {
         $from = $data['fromUserId'];
@@ -327,6 +323,10 @@ class OrdersModel extends CI_Model
 
     }
 
+    public function remove_subgrp($data)
+    {
+        
+    }
 }
 
 ?>
