@@ -31,7 +31,7 @@ class DashboardModel extends CI_Model {
         if($rank == 6)
             return $sub;
         // return squad info if user is a platoon commander or squad member, each squad has its own table with 2 members, get squad if from platoon table
-        if($rank == 5)
+        else if($rank == 5)
         {
             $squads = array('Anti_Tank','Medical','Sniper','Assault','Signals','Infantry');
             foreach ( $squads as $squad ) {

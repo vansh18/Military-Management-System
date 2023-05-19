@@ -325,7 +325,35 @@ class OrdersModel extends CI_Model
 
     public function remove_subgrp($data)
     {
-        
+        // Function to remove subgroup
+        $subgroup = '';
+        $mygroup = '';
+        $my_leader = '';
+        $sub_leader = '';
+        if($_SESSION['user_info']['Rank_id'] == 1)
+        {
+            $subgroup =  'Batallion';
+            $mygroup = 'Brigade';
+            $my_leader = 'Brigade_commander';
+            $sub_leader = 'Commanding_officer';
+            $sub_rank = 'Col. ';
+        }
+        else if ($_SESSION['user_info']['Rank_id'] == 2 || $_SESSION['user_info']['Rank_id'] == 3)
+        {
+            $subgroup =  'Company';
+            $mygroup = 'Batallion';
+            $my_leader = 'Commanding_officer';
+            $sub_leader = 'Company_Commander';
+            $sub_rank = 'Maj. ';
+        }
+        else if ($_SESSION['user_info']['Rank_id'] == 4)
+        {
+            $subgroup =  'Platoon';
+            $mygroup = 'Company';
+            $my_leader = 'Company_Commander';
+            $sub_leader = 'NCO';
+            $sub_rank = 'Hav. ';
+        }
     }
 }
 

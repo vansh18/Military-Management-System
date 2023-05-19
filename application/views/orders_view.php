@@ -54,21 +54,32 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
                         <div class="text-field" id="order-type-container">
 							<label for="allocate retire" class="input-heading">Select Order</label>
 							<select id="order-type" name="quantity" class="quantity-list" onchange="check()" required>
-                                <option value="4" selected>Create <?php echo $subgroup;?></option>
 								<option value="1">Promote</option>
 								<option value="2">Demote</option>
 								<option value="3">Dismiss</option>
-								<!-- <option value="5">Remove <?php //echo $subgroup;?></option> -->
+                                <option value="4">Create <?php echo $subgroup;?></option>
+								<option value="5">Remove <?php echo $subgroup;?></option>
 							  </select>
 						</div>
                         <div class="text-field" id="subordinate-container">
 							<label for="name" class="input-heading">Select Subordinate</label>
 							<select id="subordinate" name="quantity" class="quantity-list" required>
                                 <?php 
+                                if($subgroup == 'Squad')
+                                {
+                                    foreach($subs as $sub)
+                                    {
+                                        echo '<option value="'.$sub['id'][0].'">'.$sub['names'][0].'</option>';
+                                        echo '<option value="'.$sub['id'][1].'">'.$sub['names'][1].'</option>';
+                                    }
+                                }
+                                else
+                                {
                                     foreach($subs as $sub)
                                     {
                                         echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
                                     }
+                                }
                                 ?>
                               </select>
 						</div>
@@ -103,10 +114,13 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 							<label for="name" class="input-heading">Select Commander Name</label>
 							<select id="leader_name" name="quantity" class="quantity-list" required>
                                 <?php 
+                                if($_SESSION['user_info']['Rank_id'] < 5)
+                                {
                                     foreach($subordinates as $sub)
                                     {
                                         echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
                                     }
+                                }
                                 ?>
                               </select>
 						</div>

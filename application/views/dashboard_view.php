@@ -165,10 +165,10 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             ?>
             </tr>
           </thead>
+          <tbody>
           <?php if ($_SESSION['user_info']['Rank_id'] == 5)
           {
             ?>
-          <tbody>
             <?php 
               $squads = array('Anti_Tank','Medical','Sniper','Assault','Signals','Infantry');
               $i=0;
@@ -184,7 +184,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
               </tr>
               <tr>
                 <td><?php echo $subs['id'][1];?></td>
-                <td><?php echo $subs['names'][1];?></td>
+                <td>Sepoy <?php echo $subs['names'][1];?></td>
                 <td><?php echo $squads[$i];?></td>
               </tr>
             <?php
@@ -192,13 +192,12 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
               }
             }
               ?>
-          </tbody>
           <?php
           }
           else
           {
             ?>
-            <tbody>
+
             <?php 
             if(isset($sub_list))
             {
@@ -222,10 +221,9 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             }
           }
               ?>
-          </tbody>
 
-          <?php 
-        } ?>
+      <?php } ?>
+        </tbody>
         </table>
       </div>
     </div>
