@@ -65,7 +65,10 @@ class OrdersModel extends CI_Model
                     WHERE Users.Rank_id = 3 AND Users.post = ? AND Users.Cur_status = 'Idle' LIMIT 1";
             $query = $this->db->query($sql,$post);
             $result = $query->result_array();
-            $second_incharge = $result[0]['User_id'];
+            if(isset($result[0]['User_id']))
+                $second_incharge = $result[0]['User_id'];
+            else
+                $second_incharge = null;
             // Query to add batallion into batallion table
             $sql = "INSERT INTO Batallion (Batallion_name,Commanding_officer,Second_IC) VALUES (?,?,?)";
             $query = $this->db->query($sql,array($name,$leader,$second_incharge));
@@ -323,7 +326,7 @@ class OrdersModel extends CI_Model
 
     }
 
-    public function remove_subgrp($data)
+    public function remove_subgrp($subuserid)
     {
         // Function to remove subgroup
         $subgroup = '';
@@ -353,6 +356,35 @@ class OrdersModel extends CI_Model
             $my_leader = 'Company_Commander';
             $sub_leader = 'NCO';
             $sub_rank = 'Hav. ';
+        }
+        else if($_SESSION['user_info']['Rank_id'] == 5)
+        {
+            $subgroup =  'Squad';
+            $mygroup = 'Platoon';
+            $my_leader = 'NCO';
+        }
+        // Start a transaction
+        $this->db->trans_start();
+        // Get id of subgroup whose leader's id us $subuserid
+        $sql = "SELECT $subgroup"."_id FROM $subgroup WHERE $sub_leader = ?";
+        $query = $this->db->query($sql,$subuserid);
+        $result = $query->result_array();
+        // If no such subgroup exists, return false
+        if(isset($result[0][$subgroup.'_id']))
+            $id = $result[0][$subgroup.'_id']; 
+        else
+            return false;
+        // Get id of mygroup whose leader's id is $id 
+        $sql = "DELETE FROM $subgroup WHERE $subgroup"."_id in (?)";
+        $query = $this->db->query($sql,$id);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 }

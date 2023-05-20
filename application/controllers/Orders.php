@@ -57,8 +57,8 @@ class Orders extends CI_Controller
     }
     public function remove_subgrp()
     {
-        $data = $_POST;
-        if($this->OrdersModel->remove_subgrp($data))
+        $id = $_POST['id'];
+        if($this->OrdersModel->remove_subgrp($id))
         {
             echo(json_encode(array(
                 'status'=> 200,

@@ -132,7 +132,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 
 
                     <div class="button">
-                        <input type="button" value="Confirm" onclick = "passOrder('<?php echo BASE_URL;?>');">
+                        <input type="button" id = "confirm-order" value="Confirm" onclick = "passOrder('<?php echo BASE_URL;?>');">
                     </div>
                 </div>
             </form>
@@ -163,12 +163,20 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
     function check() 
     {
         var order_type = document.getElementById("order-type").value;
-        if(order_type == 4 || order_type == 5 )
+        if(order_type == 4)
         {
             console.log("Create subgroup");
             document.getElementById("soldier-info").style.display = "none";
+            document.getElementById("subordinate-container").style.display = "none";
             document.getElementById("subgroup-action").style.display = "flex";
 
+        }
+        else if(order_type == 5)
+        {
+            console.log("Remove subgroup");
+            document.getElementById("soldier-info").style.display = "none";
+            document.getElementById("subordinate-container").style.display = "flex";
+            document.getElementById("subgroup-action").style.display = "none";
         }
         else
         {
