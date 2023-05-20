@@ -47,7 +47,7 @@ class OperationModel extends CI_Model
                     ";
             $query = $this->db->query($sql,array($brigade_id,$brigade_id,$brigade_id,$brigade_id));
             $result=$query->result_array();
-            if(isset($result['Batallion_id']))
+            if(isset($result[0]['Batallion_id']))
             {
                 foreach($result as $k => $res)
                 {
