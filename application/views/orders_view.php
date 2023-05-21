@@ -90,13 +90,24 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
                     </div>
                     <div class="soldier-info" id="soldier-info">
                         <div class="text-field">
-							<label for="name" class="input-heading">Select Soldier Rank</label>
+							<label for="name" class="input-heading">Select Subordinate</label>
+                            <!-- Dropdown for promote/demote -->
 							<select id="rank" name="quantity" class="quantity-list" required>
-                                <option value="1">Rank 1</option>
-                                <option value="2">Rank 2</option>
-                                <option value="3">Rank 3</option>
-                                <option value="4">Rank 4</option>
-                                <option value="5">Rank 5</option>
+                                <?php
+                                if($_SESSION['user_info']['Rank_id'] < 5)
+                                {
+                                    // Subordinates who are deployed
+                                    foreach($subs as $sub)
+                                    {
+                                        echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
+                                    }
+                                    // Subordinates who are Idle
+                                    foreach($subordinates as $sub)
+                                    {
+                                        echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
+                                    }
+                                }
+                                ?>
                               </select>
 						</div>
 						<!-- <div class="option-field" id="option-field">
@@ -140,6 +151,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
     </div>
 </body>
 <script>
+    check();
     const predefined = document.getElementById("firearms");
     const custom = document.getElementById("vehicles");
     const custom_order_container = document.getElementById("custom-order-container");
@@ -147,13 +159,15 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
     custom.addEventListener("change", function() 
     {
 		document.getElementById("custom-order-container").style.display = "flex";
-		document.getElementById("soldier-info").style.display = "none";
+        document.getElementById("subordinate-container").style.display = "none";
+		document.getElementById("soldier-info").style.display = "flex";
 		document.getElementById("order-type-container").style.display = "none";
 		document.getElementById("subgroup-action").style.display = "none";
 	});
     
     predefined.addEventListener("change", function() 
     {
+        check();
         document.getElementById("order-type-container").style.display = "flex";
 		document.getElementById("custom-order-container").style.display = "none";
         document.getElementById("soldier-info").style.display = "flex";
@@ -178,10 +192,11 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             document.getElementById("subordinate-container").style.display = "flex";
             document.getElementById("subgroup-action").style.display = "none";
         }
-        else
+        else if(order_type == 1 || order_type == 2)
         {
             document.getElementById("soldier-info").style.display = "flex";
             document.getElementById("subgroup-action").style.display = "none";
+            document.getElementById("subordinate-container").style.display = "none";
         }
     }
     
