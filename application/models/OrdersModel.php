@@ -387,6 +387,61 @@ class OrdersModel extends CI_Model
             return true;
         }
     }
+
+    public function promote($id)
+    {
+        $rank = $_SESSION['user_info']['Rank_id'] + 1;
+        $post = $_SESSION['user_info']['post'];
+        // Begin a transaction
+        $this->db->trans_start();
+        // Get Cur_status of user
+        $sql = "SELECT Cur_status FROM Users WHERE User_id = ?";
+        $query = $this->db->query($sql,$id);
+        $result = $query->result_array();
+        $status = $result[0]['Cur_status'];
+        if($status == 'Deployed')
+        {
+           $sql = "CALL main_promote(?,?,?)";  
+           $query = $this->db->query($sql,array($id,$rank,$post));
+        }
+        else if($status == 'Idle')
+        {
+            $sql = "CALL promote(?)";
+            $query = $this->db->query($sql,$id);
+        }
+        $this->db->trans_commit();
+        if ($this->db->trans_status() === FALSE)
+            return false;
+        else
+            return true;
+    }
+    public function demote($id)
+    {
+        $rank = $_SESSION['user_info']['Rank_id'] + 1;
+        $post = $_SESSION['user_info']['post'];
+        // Begin a transaction
+        $this->db->trans_start();
+        // Get Cur_status of user
+        $sql = "SELECT Cur_status FROM Users WHERE User_id = ?";
+        $query = $this->db->query($sql,$id);
+        $result = $query->result_array();
+        $status = $result[0]['Cur_status'];
+        if($status == 'Deployed')
+        {
+           $sql = "CALL main_demote(?,?,?)";  
+           $query = $this->db->query($sql,array($id,$rank,$post));
+        }
+        else if($status == 'Idle')
+        {
+            $sql = "CALL demote(?)";
+            $query = $this->db->query($sql,$id);
+        }
+        $this->db->trans_commit();
+        if ($this->db->trans_status() === FALSE)
+            return false;
+        else
+            return true;
+    }
 }
 
 ?>

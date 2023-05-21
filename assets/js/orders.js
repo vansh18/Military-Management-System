@@ -10,10 +10,70 @@ function passOrder(url)
     if(selectOption == "1")
     {
         // Action is promote
+        var id = $('#rank').val();
+        //make ajax call to send values to the server
+        $.ajax({
+            url : url+"promote",
+            type : "POST",
+            data : {
+                id : id
+            },
+            success: function(response) {
+                if(response.status == 200) 
+                {
+                    // change button value to success and change color to green
+                    $('#confirm-order').val('Order Successfull!');
+                    $('#confirm-order').css('background-color', '#008000');
+                    // refresh after 0.5 seconds
+                    setTimeout(function() {
+                        location.reload();
+                    },500);
+                }
+                else if (response.status == 500)
+                {
+                    alert("Promotion failed");
+                }
+            },
+            error: function() {
+                console.log("Error occurred during Ajax call");
+                alert("Promotion failed");
+            },
+            dataType: "json"
+        });
     }
     else if (selectOption == '2')
     {
         // Action is demote
+        var id = $('#rank').val();
+        //make ajax call to send values to the server
+        $.ajax({
+            url : url+"demote",
+            type : "POST",
+            data : {
+                id : id
+            },
+            success: function(response) {
+                if(response.status == 200) 
+                {
+                    // change button value to success and change color to green
+                    $('#confirm-order').val('Order Successfull!');
+                    $('#confirm-order').css('background-color', '#008000');
+                    // refresh after 0.5 seconds
+                    setTimeout(function() {
+                        location.reload();
+                    },500);
+                }
+                else if (response.status == 500)
+                {
+                    alert("Demotion failed");
+                }
+            },
+            error: function() {
+                console.log("Error occurred during Ajax call");
+                alert("Demotion failed");
+            },
+            dataType: "json"
+        });
     }
     else if (selectOption == '3')
     {

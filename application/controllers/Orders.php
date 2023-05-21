@@ -74,6 +74,43 @@ class Orders extends CI_Controller
         }
 
     }
+    public function promote()
+    {
+        $id = $_POST['id'];
+        if($this->OrdersModel->promote($id))
+        {
+            echo(json_encode(array(
+                'status'=> 200,
+                'message'=> 'Subgroup promoted successfully'
+            )));
+        }
+        else
+        {
+            echo(json_encode(array(
+                'status'=> 500,
+                'message'=> 'Subgroup promotion failed'
+            )));
+        }
+    }
+    public function demote()
+    {
+        $id = $_POST['id'];
+        if($this->OrdersModel->demote($id))
+        {
+            echo(json_encode(array(
+                'status'=> 200,
+                'message'=> 'Subgroup demoted successfully'
+            )));
+        }
+        else
+        {
+            echo(json_encode(array(
+                'status'=> 500,
+                'message'=> 'Subgroup demotion failed'
+            )));
+        }
+    }
+    
     public function custom_order()
     {
         $data = $_POST;

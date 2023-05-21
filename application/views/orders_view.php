@@ -56,7 +56,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 							<select id="order-type" name="quantity" class="quantity-list" onchange="check()" required>
 								<option value="1">Promote</option>
 								<option value="2">Demote</option>
-								<option value="3">Dismiss</option>
+								<!-- <option value="3">Dismiss</option> -->
                                 <option value="4">Create <?php echo $subgroup;?></option>
 								<option value="5">Remove <?php echo $subgroup;?></option>
 							  </select>
