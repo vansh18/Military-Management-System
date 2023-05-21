@@ -295,7 +295,7 @@ class OrdersModel extends CI_Model
     public function get_in_orders($userid)
     {
         //function to get incoming orders from orders table
-        $sql = "SELECT * FROM Orders WHERE to_id = ?";
+        $sql = "SELECT * FROM Orders WHERE to_id = ? ORDER BY Start_date DESC";
         $query = $this->db->query($sql,$userid);
         if($query->num_rows() == 0)
             return array();
