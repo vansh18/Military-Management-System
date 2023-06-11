@@ -7,6 +7,7 @@ class Orders extends CI_Controller
         parent::__construct ();
         user_login ();
         $this->load->model ( 'OrdersModel' );
+        $this->load->model ( 'DashboardModel' );
     }
 
     public function index() 
@@ -17,10 +18,13 @@ class Orders extends CI_Controller
             echo 'You are not authorized to access this page. You will be redirected to dashboard in 2 seconds.';
             header ( "refresh:2;url=" . base_url () . "dashboard" );
         } 
+        else if ($_SESSION['user_info']['Cur_Status'] == 'Idle')
+        {
+            echo 'Your status is Idle, you are not authorized to access this page. You will be redirected to dashboard in 2 seconds.';
+            header ( "refresh:2;url=" . base_url () . "dashboard" );
+        }
         else 
         {
-            
-            $this->load->model ( 'DashboardModel' );
             $rank = $_SESSION ['user_info'] ['Rank_id'];
             $userid = $_SESSION ['user_info'] ['User_id'];
             $post = $_SESSION ['user_info'] ['post'];
@@ -53,8 +57,8 @@ class Orders extends CI_Controller
     }
     public function remove_subgrp()
     {
-        $data = $_POST;
-        if($this->OrdersModel->remove_subgrp($data))
+        $id = $_POST['id'];
+        if($this->OrdersModel->remove_subgrp($id))
         {
             echo(json_encode(array(
                 'status'=> 200,
@@ -70,6 +74,43 @@ class Orders extends CI_Controller
         }
 
     }
+    public function promote()
+    {
+        $id = $_POST['id'];
+        if($this->OrdersModel->promote($id))
+        {
+            echo(json_encode(array(
+                'status'=> 200,
+                'message'=> 'Subgroup promoted successfully'
+            )));
+        }
+        else
+        {
+            echo(json_encode(array(
+                'status'=> 500,
+                'message'=> 'Subgroup promotion failed'
+            )));
+        }
+    }
+    public function demote()
+    {
+        $id = $_POST['id'];
+        if($this->OrdersModel->demote($id))
+        {
+            echo(json_encode(array(
+                'status'=> 200,
+                'message'=> 'Subgroup demoted successfully'
+            )));
+        }
+        else
+        {
+            echo(json_encode(array(
+                'status'=> 500,
+                'message'=> 'Subgroup demotion failed'
+            )));
+        }
+    }
+    
     public function custom_order()
     {
         $data = $_POST;

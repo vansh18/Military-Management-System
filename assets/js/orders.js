@@ -1,13 +1,79 @@
+// window.onload('check()')
 function passOrder(url)
 {
     var selectOption = $('#order-type').val();
+    // disable the confirm button
+    $('#confirm-order').prop('disabled', true);
+    // change button value to processing and chnage color to grey
+    $('#confirm-order').val('Processing...');
+    $('#confirm-order').css('background-color', '#808080');
     if(selectOption == "1")
     {
         // Action is promote
+        var id = $('#rank').val();
+        //make ajax call to send values to the server
+        $.ajax({
+            url : url+"promote",
+            type : "POST",
+            data : {
+                id : id
+            },
+            success: function(response) {
+                if(response.status == 200) 
+                {
+                    // change button value to success and change color to green
+                    $('#confirm-order').val('Order Successfull!');
+                    $('#confirm-order').css('background-color', '#008000');
+                    // refresh after 0.5 seconds
+                    setTimeout(function() {
+                        location.reload();
+                    },500);
+                }
+                else if (response.status == 500)
+                {
+                    alert("Promotion failed");
+                }
+            },
+            error: function() {
+                console.log("Error occurred during Ajax call");
+                alert("Promotion failed");
+            },
+            dataType: "json"
+        });
     }
     else if (selectOption == '2')
     {
         // Action is demote
+        var id = $('#rank').val();
+        //make ajax call to send values to the server
+        $.ajax({
+            url : url+"demote",
+            type : "POST",
+            data : {
+                id : id
+            },
+            success: function(response) {
+                if(response.status == 200) 
+                {
+                    // change button value to success and change color to green
+                    $('#confirm-order').val('Order Successfull!');
+                    $('#confirm-order').css('background-color', '#008000');
+                    // refresh after 0.5 seconds
+                    setTimeout(function() {
+                        location.reload();
+                    },500);
+                }
+                else if (response.status == 500)
+                {
+                    alert("Demotion failed");
+                }
+            },
+            error: function() {
+                console.log("Error occurred during Ajax call");
+                alert("Demotion failed");
+            },
+            dataType: "json"
+        });
     }
     else if (selectOption == '3')
     {
@@ -32,7 +98,8 @@ function passOrder(url)
             success: function(response) {
                 if(response.status == 200) 
                 {
-                    alert("Subgroup created successfully");
+                    $('#confirm-order').val('Order Successfull!');
+                    $('#confirm-order').css('background-color', '#008000');
                     // refresh after 1 seconds
                     setTimeout(function() {
                         location.reload();
@@ -53,18 +120,20 @@ function passOrder(url)
     else if (selectOption == '5')
     {
         // Action is delete subgrp
-        var subgrpId = $('#subgrp-id').val();
+        var subid = $('#subordinate').val();
         //make ajax call to send values to the server
         $.ajax({
             url : url+"delete-subgrp",
             type : "POST",
             data : {
-                subgrpId : subgrpId
+                id : subid
             },
             success: function(response) {
                 if(response.status == 200) 
                 {
-                    alert("Subgroup deleted successfully");
+                    // change button value to success and change color to green
+                    $('#confirm-order').val('Order Successfull!');
+                    $('#confirm-order').css('background-color', '#008000');
                     // refresh after 0.5 seconds
                     setTimeout(function() {
                         location.reload();
@@ -78,7 +147,8 @@ function passOrder(url)
             error: function() {
                 console.log("Error occurred during Ajax call");
                 alert("Subgroup deletion failed");
-            }
+            },
+            dataType: "json"
         });
     }
     // check if the action is custom-order

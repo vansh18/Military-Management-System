@@ -65,7 +65,10 @@ class OrdersModel extends CI_Model
                     WHERE Users.Rank_id = 3 AND Users.post = ? AND Users.Cur_status = 'Idle' LIMIT 1";
             $query = $this->db->query($sql,$post);
             $result = $query->result_array();
-            $second_incharge = $result[0]['User_id'];
+            if(isset($result[0]['User_id']))
+                $second_incharge = $result[0]['User_id'];
+            else
+                $second_incharge = null;
             // Query to add batallion into batallion table
             $sql = "INSERT INTO Batallion (Batallion_name,Commanding_officer,Second_IC) VALUES (?,?,?)";
             $query = $this->db->query($sql,array($name,$leader,$second_incharge));
@@ -224,8 +227,8 @@ class OrdersModel extends CI_Model
             foreach($squads as $squad)
             {
                 $this->db->trans_begin();
-                $sql = "SELECT User_id FROM Users WHERE Rank_id = 6 AND Cur_Status = 'Idle' LIMIT 2";
-                $query = $this->db->query($sql);
+                $sql = "SELECT User_id FROM Users WHERE Rank_id = 6 AND Cur_Status = 'Idle' AND post = ? LIMIT 2";
+                $query = $this->db->query($sql,$post);
                 $result = $query->result_array();
                 $members = array($result[0]['User_id'],$result[1]['User_id']);
                 $sql = "INSERT INTO $squad (squad_mem1,squad_mem2) VALUES (?,?)";
@@ -275,10 +278,6 @@ class OrdersModel extends CI_Model
         }
     }
 
-    public function remove_subgrp($data)
-    {
-
-    }
     public function custom_order($data)
     {
         $from = $data['fromUserId'];
@@ -296,7 +295,7 @@ class OrdersModel extends CI_Model
     public function get_in_orders($userid)
     {
         //function to get incoming orders from orders table
-        $sql = "SELECT * FROM Orders WHERE to_id = ?";
+        $sql = "SELECT * FROM Orders WHERE to_id = ? ORDER BY Start_date DESC";
         $query = $this->db->query($sql,$userid);
         if($query->num_rows() == 0)
             return array();
@@ -327,6 +326,122 @@ class OrdersModel extends CI_Model
 
     }
 
+    public function remove_subgrp($subuserid)
+    {
+        // Function to remove subgroup
+        $subgroup = '';
+        $mygroup = '';
+        $my_leader = '';
+        $sub_leader = '';
+        if($_SESSION['user_info']['Rank_id'] == 1)
+        {
+            $subgroup =  'Batallion';
+            $mygroup = 'Brigade';
+            $my_leader = 'Brigade_commander';
+            $sub_leader = 'Commanding_officer';
+            $sub_rank = 'Col. ';
+        }
+        else if ($_SESSION['user_info']['Rank_id'] == 2 || $_SESSION['user_info']['Rank_id'] == 3)
+        {
+            $subgroup =  'Company';
+            $mygroup = 'Batallion';
+            $my_leader = 'Commanding_officer';
+            $sub_leader = 'Company_Commander';
+            $sub_rank = 'Maj. ';
+        }
+        else if ($_SESSION['user_info']['Rank_id'] == 4)
+        {
+            $subgroup =  'Platoon';
+            $mygroup = 'Company';
+            $my_leader = 'Company_Commander';
+            $sub_leader = 'NCO';
+            $sub_rank = 'Hav. ';
+        }
+        else if($_SESSION['user_info']['Rank_id'] == 5)
+        {
+            $subgroup =  'Squad';
+            $mygroup = 'Platoon';
+            $my_leader = 'NCO';
+        }
+        // Start a transaction
+        $this->db->trans_start();
+        // Get id of subgroup whose leader's id us $subuserid
+        $sql = "SELECT $subgroup"."_id FROM $subgroup WHERE $sub_leader = ?";
+        $query = $this->db->query($sql,$subuserid);
+        $result = $query->result_array();
+        // If no such subgroup exists, return false
+        if(isset($result[0][$subgroup.'_id']))
+            $id = $result[0][$subgroup.'_id']; 
+        else
+            return false;
+        // Get id of mygroup whose leader's id is $id 
+        $sql = "DELETE FROM $subgroup WHERE $subgroup"."_id in (?)";
+        $query = $this->db->query($sql,$id);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public function promote($id)
+    {
+        $rank = $_SESSION['user_info']['Rank_id'] + 1;
+        $post = $_SESSION['user_info']['post'];
+        // Begin a transaction
+        $this->db->trans_start();
+        // Get Cur_status of user
+        $sql = "SELECT Cur_status FROM Users WHERE User_id = ?";
+        $query = $this->db->query($sql,$id);
+        $result = $query->result_array();
+        $status = $result[0]['Cur_status'];
+        if($status == 'Deployed')
+        {
+           $sql = "CALL main_promote(?,?,?)";  
+           $query = $this->db->query($sql,array($id,$rank,$post));
+        }
+        else if($status == 'Idle')
+        {
+            $sql = "CALL promote(?)";
+            $query = $this->db->query($sql,$id);
+        }
+        $this->db->trans_commit();
+        if ($this->db->trans_status() === FALSE)
+            return false;
+        else
+            return true;
+    }
+    public function demote($id)
+    {
+        $rank = $_SESSION['user_info']['Rank_id'] + 1;
+        $post = $_SESSION['user_info']['post'];
+        // Begin a transaction
+        $this->db->trans_start();
+        // Get Cur_status of user
+        $sql = "SELECT Cur_status FROM Users WHERE User_id = ?";
+        $query = $this->db->query($sql,$id);
+        $result = $query->result_array();
+        $status = $result[0]['Cur_status'];
+        if($status == 'Deployed')
+        {
+           $sql = "CALL main_demote(?,?,?)";  
+           $query = $this->db->query($sql,array($id,$rank,$post));
+        }
+        else if($status == 'Idle')
+        {
+            $sql = "CALL demote(?)";
+            $query = $this->db->query($sql,$id);
+        }
+        $this->db->trans_commit();
+        if ($this->db->trans_status() === FALSE)
+            return false;
+        else
+            return true;
+    }
 }
 
 ?>

@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							Military Unit: <span>1<sup>st</sup> Division</span>
 						</p>
 						<p class="title rec-date">
-						  Recruitment Date: <span id="join-date"><?php echo $_SESSION['user_info']['Joining_date'];?></span>
+						  Joining Date: <span id="join-date"><?php echo $_SESSION['user_info']['Joining_date'];?></span>
 						</p>
 						<p class="title ret-date">
                             Retirement Date: <span id="retire-date"><?php echo $_SESSION['user_info']['Retirement_date'];?></span>

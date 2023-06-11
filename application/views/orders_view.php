@@ -56,8 +56,8 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 							<select id="order-type" name="quantity" class="quantity-list" onchange="check()" required>
 								<option value="1">Promote</option>
 								<option value="2">Demote</option>
-								<option value="3">Dismiss</option>
-								<option value="4">Create <?php echo $subgroup;?></option>
+								<!-- <option value="3">Dismiss</option> -->
+                                <option value="4">Create <?php echo $subgroup;?></option>
 								<option value="5">Remove <?php echo $subgroup;?></option>
 							  </select>
 						</div>
@@ -65,10 +65,21 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 							<label for="name" class="input-heading">Select Subordinate</label>
 							<select id="subordinate" name="quantity" class="quantity-list" required>
                                 <?php 
+                                if($subgroup == 'Squad')
+                                {
+                                    foreach($subs as $sub)
+                                    {
+                                        echo '<option value="'.$sub['id'][0].'">'.$sub['names'][0].'</option>';
+                                        echo '<option value="'.$sub['id'][1].'">'.$sub['names'][1].'</option>';
+                                    }
+                                }
+                                else
+                                {
                                     foreach($subs as $sub)
                                     {
                                         echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
                                     }
+                                }
                                 ?>
                               </select>
 						</div>
@@ -79,16 +90,27 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
                     </div>
                     <div class="soldier-info" id="soldier-info">
                         <div class="text-field">
-							<label for="name" class="input-heading">Select Soldier Rank</label>
+							<label for="name" class="input-heading">Select Subordinate</label>
+                            <!-- Dropdown for promote/demote -->
 							<select id="rank" name="quantity" class="quantity-list" required>
-                                <option value="1">Rank 1</option>
-                                <option value="2">Rank 2</option>
-                                <option value="3">Rank 3</option>
-                                <option value="4">Rank 4</option>
-                                <option value="5">Rank 5</option>
+                                <?php
+                                if($_SESSION['user_info']['Rank_id'] < 5)
+                                {
+                                    // Subordinates who are deployed
+                                    foreach($subs as $sub)
+                                    {
+                                        echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
+                                    }
+                                    // Subordinates who are Idle
+                                    foreach($subordinates as $sub)
+                                    {
+                                        echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
+                                    }
+                                }
+                                ?>
                               </select>
 						</div>
-						<div class="option-field" id="option-field">
+						<!-- <div class="option-field" id="option-field">
 							<label for="quantity" class="input-heading">Select Soldier Name</label>
 							<select id="soldier-name" name="quantity" class="quantity-list" required>
 							  <option value="1">Sepoy Alan</option>
@@ -96,17 +118,20 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 							  <option value="3">Sepoy Hrishikesh</option>
 							  <option value="4">Sepoy Tanish</option>
 							</select>
-						  </div>
+						  </div> -->
                     </div>
                     <div class="subgroup-action" id="subgroup-action">
                         <div class="text-field">
 							<label for="name" class="input-heading">Select Commander Name</label>
 							<select id="leader_name" name="quantity" class="quantity-list" required>
                                 <?php 
+                                if($_SESSION['user_info']['Rank_id'] < 5)
+                                {
                                     foreach($subordinates as $sub)
                                     {
                                         echo '<option value="'.$sub['User_id'].'">'.$sub['User_name'].'</option>';
                                     }
+                                }
                                 ?>
                               </select>
 						</div>
@@ -118,7 +143,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
 
 
                     <div class="button">
-                        <input type="button" value="Confirm" onclick = "passOrder('<?php echo BASE_URL;?>');">
+                        <input type="button" id = "confirm-order" value="Confirm" onclick = "passOrder('<?php echo BASE_URL;?>');">
                     </div>
                 </div>
             </form>
@@ -126,6 +151,7 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
     </div>
 </body>
 <script>
+    check();
     const predefined = document.getElementById("firearms");
     const custom = document.getElementById("vehicles");
     const custom_order_container = document.getElementById("custom-order-container");
@@ -133,13 +159,15 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
     custom.addEventListener("change", function() 
     {
 		document.getElementById("custom-order-container").style.display = "flex";
-		document.getElementById("soldier-info").style.display = "none";
+        document.getElementById("subordinate-container").style.display = "none";
+		document.getElementById("soldier-info").style.display = "flex";
 		document.getElementById("order-type-container").style.display = "none";
 		document.getElementById("subgroup-action").style.display = "none";
 	});
     
     predefined.addEventListener("change", function() 
     {
+        check();
         document.getElementById("order-type-container").style.display = "flex";
 		document.getElementById("custom-order-container").style.display = "none";
         document.getElementById("soldier-info").style.display = "flex";
@@ -149,17 +177,26 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
     function check() 
     {
         var order_type = document.getElementById("order-type").value;
-        if(order_type == 4 || order_type == 5 )
+        if(order_type == 4)
         {
             console.log("Create subgroup");
             document.getElementById("soldier-info").style.display = "none";
+            document.getElementById("subordinate-container").style.display = "none";
             document.getElementById("subgroup-action").style.display = "flex";
 
         }
-        else
+        else if(order_type == 5)
+        {
+            console.log("Remove subgroup");
+            document.getElementById("soldier-info").style.display = "none";
+            document.getElementById("subordinate-container").style.display = "flex";
+            document.getElementById("subgroup-action").style.display = "none";
+        }
+        else if(order_type == 1 || order_type == 2)
         {
             document.getElementById("soldier-info").style.display = "flex";
             document.getElementById("subgroup-action").style.display = "none";
+            document.getElementById("subordinate-container").style.display = "none";
         }
     }
     

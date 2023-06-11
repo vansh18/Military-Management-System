@@ -47,13 +47,16 @@ class OperationModel extends CI_Model
                     ";
             $query = $this->db->query($sql,array($brigade_id,$brigade_id,$brigade_id,$brigade_id));
             $result=$query->result_array();
-            foreach($result as $k => $res)
+            if(isset($result[0]['Batallion_id']))
             {
-                $sql = "SELECT Batallion_name FROM Batallion WHERE Batallion_id = ?";
-                $query = $this->db->query($sql,$res['Batallion_id']);
-                $result2=$query->row_array();
-                $res['Batallion_name'] = $result2['Batallion_name'];
-                $result[$k] = $res;
+                foreach($result as $k => $res)
+                {
+                    $sql = "SELECT Batallion_name FROM Batallion WHERE Batallion_id = ?";
+                    $query = $this->db->query($sql,$res['Batallion_id']);
+                    $result2=$query->row_array();
+                    $res['Batallion_name'] = $result2['Batallion_name'];
+                    $result[$k] = $res;
+                }
             }
             return $result;
         }
@@ -76,13 +79,16 @@ class OperationModel extends CI_Model
             $sql = "SELECT * FROM Operations WHERE Batallion_id = ? ORDER BY start_date DESC LIMIT 7";
             $query = $this->db->query($sql,$batallion_id);
             $result=$query->result_array();
-            foreach($result as $k => $res)
+            if(isset($result['Batallion_id']))
             {
-                $sql = "SELECT Batallion_name FROM Batallion WHERE Batallion_id = ?";
-                $query = $this->db->query($sql,$res['Batallion_id']);
-                $result2=$query->row_array();
-                $res['Batallion_name'] = $result2['Batallion_name'];
-                $result[$k] = $res;
+                foreach($result as $k => $res)
+                {
+                    $sql = "SELECT Batallion_name FROM Batallion WHERE Batallion_id = ?";
+                    $query = $this->db->query($sql,$res['Batallion_id']);
+                    $result2=$query->row_array();
+                    $res['Batallion_name'] = $result2['Batallion_name'];
+                    $result[$k] = $res;
+                }
             }
             return $result;
         }

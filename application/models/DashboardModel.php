@@ -28,8 +28,10 @@ class DashboardModel extends CI_Model {
     {
         // function to get the subgroup of the user
         $sub = array();
+        if($rank == 6)
+            return $sub;
         // return squad info if user is a platoon commander or squad member, each squad has its own table with 2 members, get squad if from platoon table
-        if($rank == 5)
+        else if($rank == 5)
         {
             $squads = array('Anti_Tank','Medical','Sniper','Assault','Signals','Infantry');
             foreach ( $squads as $squad ) {
@@ -84,6 +86,8 @@ class DashboardModel extends CI_Model {
             $sql = "SELECT $subgroup"."1, $subgroup"."2, $subgroup"."3, $subgroup"."4 FROM $mygroup WHERE $my_leader = ?";
             $query = $this->db->query ( $sql, array($_SESSION['userid']) );
             $subgrp = $query->row_array();
+            if(!isset($subgrp))
+                return NULL;
             foreach($subgrp as $key => $value)
             {
                 // query to get subgroup leader name

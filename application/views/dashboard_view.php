@@ -156,21 +156,24 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
             else
             {
               ?>
+              <th>ID</th>
               <th>Name</th>
-              <th>Commander</th>
+              <th>Commander Name</th>
               <th>Commander ID</th>
               <?php
             }
             ?>
             </tr>
           </thead>
+          <tbody>
           <?php if ($_SESSION['user_info']['Rank_id'] == 5)
           {
             ?>
-          <tbody>
             <?php 
               $squads = array('Anti_Tank','Medical','Sniper','Assault','Signals','Infantry');
               $i=0;
+              if(isset($sub_list))
+              {
               foreach($sub_list as $subs)
               {
             ?>
@@ -181,21 +184,23 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
               </tr>
               <tr>
                 <td><?php echo $subs['id'][1];?></td>
-                <td><?php echo $subs['names'][1];?></td>
+                <td>Sepoy <?php echo $subs['names'][1];?></td>
                 <td><?php echo $squads[$i];?></td>
               </tr>
             <?php
                 $i++;
               }
+            }
               ?>
-          </tbody>
           <?php
           }
           else
           {
             ?>
-            <tbody>
+
             <?php 
+            if(isset($sub_list))
+            {
               foreach($sub_list as $subs)
               {
                 ?>
@@ -214,11 +219,11 @@ else if ($_SESSION['user_info']['Rank_id'] == 5)
               </tr>
               <?php
             }
+          }
               ?>
-          </tbody>
 
-          <?php 
-        } ?>
+      <?php } ?>
+        </tbody>
         </table>
       </div>
     </div>
